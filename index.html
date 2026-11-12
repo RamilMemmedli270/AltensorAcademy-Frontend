@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altensor Academy - Gələcəyin Texnologiya Təhsili</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Xüsusi CSS Faylımız -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       TOP NAVIGATION BAR (Navbar)
+       ======================================================== -->
+  <header class="header-nav">
+    <div class="nav-container">
+      
+      <!-- Brand Logo (Altensor Academy Official Logo) -->
+      <a href="index.html" class="brand-logo" id="mainLogoLink" title="Altensor Academy">
+        <img src="assets/images/logo.png" alt="Altensor Academy Loqo" class="main-logo-img">
+        <div class="brand-name">
+          Altensor<span>Academy</span>
+        </div>
+      </a>
+
+      <!-- Center Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Ana Səhifə</a></li>
+        <li><a href="#courses" class="nav-link">Tədris Proqramları</a></li>
+        <li><a href="#about" class="nav-link">Haqqımızda</a></li>
+        <li><a href="#why-us" class="nav-link">Üstünlüklərimiz</a></li>
+        <li><a href="#teachers" class="nav-link">Müəllimlər</a></li>
+        <li><a href="#contact" class="nav-link">Əlaqə</a></li>
+      </ul>
+
+      <!-- Right Action Items -->
+      <div class="nav-actions">
+        <!-- Search Button -->
+        <button class="btn-search" aria-label="Axtarış" title="Axtarış">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Log In Link -->
+        <a href="login.html" class="link-login">Daxil Ol</a>
+
+        <!-- Sign Up Free Button -> register.html -->
+        <a href="register.html" class="btn-signup">Qeydiyyat</a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================
+       HERO SECTION (Broşür mətnləri ilə tam Azərbaycan dilində)
+       ======================================================== -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      
+      <!-- Sol Tərəf: Başlıq, Broşür mətni, Düymələr və Sosial Sübut -->
+      <div class="hero-left">
+        
+        <!-- Welcome Badge -->
+        <div class="welcome-pill">
+          <span class="play-circle"><i class="fa-solid fa-graduation-cap"></i></span>
+          ALTENSOR ACADEMY-Ə XOŞ GƏLMİSİNİZ
+        </div>
+
+        <!-- Əsas Başlıq -->
+        <h1 class="hero-title">
+          Gələcəyin Bacarıqlarını Öyrənin.<br>
+          Karyeranızı <span class="highlight-career">İnkişaf Etdirin.</span>
+        </h1>
+
+        <!-- İzah Mətni (Rəsmi Broşürdən) -->
+        <p class="hero-desc">
+          Kodlaşdırma mürəkkəb problemləri həll etmə bacarığı, analitik təfəkkür və gələcəyi qurmaq vasitəsidir. Peşəkar müəllimlərdən praktiki süni intellekt və proqramlaşdırma təhsili alın.
+        </p>
+
+        <!-- Fəaliyyət Düymələri -->
+        <div class="hero-actions">
+          <a href="#courses" class="btn-explore">Kursları Kəşf Edin</a>
+        </div>
+
+        <!-- Real Üstünlüklər Zolağı (Saxta rəqəmlər olmadan) -->
+        <div class="social-proof">
+          
+          <div class="avatar-group">
+            <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(93, 95, 239, 0.18); border: 1px solid rgba(124, 127, 246, 0.35); display: flex; align-items: center; justify-content: center; color: #818CF8; font-size: 18px;">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <div class="students-count-wrap">
+              <div class="students-number">İlk Qruplara Qəbul</div>
+              <div class="students-label">Qeydiyyat Açıqdır</div>
+            </div>
+          </div>
+
+          <div class="proof-divider"></div>
+
+          <div class="avatar-group">
+            <div style="width: 42px; height: 42px; border-radius: 12px; background: rgba(16, 185, 129, 0.16); border: 1px solid rgba(16, 185, 129, 0.35); display: flex; align-items: center; justify-content: center; color: #34D399; font-size: 18px;">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="students-count-wrap">
+              <div class="students-number">Ödənişsiz Sınaq Dərsi</div>
+              <div class="students-label">İlk dərs tam pulsuz</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Sağ Tərəf: Tələbə Şəkli & 4 Üzən Real Kart -->
+      <div class="hero-right">
+        
+        <div class="hero-image-card">
+          <img 
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85" 
+            alt="Altensor Academy Tələbəsi"
+          >
+        </div>
+
+        <!-- 1. Tədris Formatı -->
+        <div class="floating-badge badge-students">
+          <div class="badge-info">
+            <span class="badge-label">Tədris Formatı</span>
+            <span class="badge-value">Azsaylı Siniflər</span>
+          </div>
+          <div class="badge-icon-box">
+            <i class="fa-solid fa-users"></i>
+          </div>
+        </div>
+
+        <!-- 2. Rəsmi Sertifikat -->
+        <div class="floating-badge badge-certificates">
+          <div class="badge-info">
+            <span class="badge-label">Tədris Yekunu</span>
+            <span class="badge-value">Rəsmi Sertifikat</span>
+          </div>
+          <div class="badge-icon-box">
+            <i class="fa-solid fa-award"></i>
+          </div>
+        </div>
+
+        <!-- 3. İxtisaslar -->
+        <div class="floating-badge badge-courses">
+          <div class="badge-info">
+            <span class="badge-label">Tədris Proqramı</span>
+            <span class="badge-value">6 İxtisas</span>
+          </div>
+          <div class="badge-icon-box">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+        </div>
+
+        <!-- 4. Metodika -->
+        <div class="floating-badge badge-success">
+          <div class="badge-info">
+            <span class="badge-label">Metodika</span>
+            <span class="badge-value">100% Praktika</span>
+          </div>
+          <div class="badge-icon-box">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       WHY CHOOSE US (Niyə Bizim Akademiya? - Broşürdəki 6 Bənd & Sitat)
+       ======================================================== -->
+  <section class="why-us-section" id="why-us">
+    <div class="why-container">
+      
+      <!-- Subtitle Tag & Main Heading -->
+      <span class="section-tag">ÜSTÜNLÜKLƏRİMİZ</span>
+      <h2 class="section-heading">Niyə Bizim Akademiya?</h2>
+
+      <!-- Broşürdəki 6 Əsas Üstünlük Kartı -->
+      <div class="features-grid">
+        
+        <!-- 1. Səmimi və peşəkar müəllimlər -->
+        <div class="feature-card card-accent-purple">
+          <div class="feature-icon-box icon-purple">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <h3 class="feature-title">Səmimi və Peşəkar Müəllimlər</h3>
+          <p class="feature-desc">
+            Sahəsində illərlə təcrübəsi olan, tələbəyə dost və yolgöstərən peşəkar mentorlar.
+          </p>
+        </div>
+
+        <!-- 2. Müasir tədris metodları -->
+        <div class="feature-card card-accent-blue">
+          <div class="feature-icon-box icon-blue">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h3 class="feature-title">Müasir Tədris Metodları</h3>
+          <p class="feature-desc">
+            Quru nəzəriyyə deyil, real layihələr və qabaqcıl texnologiyalara əsaslanan təhsil.
+          </p>
+        </div>
+
+        <!-- 3. Rahat tədris mühiti -->
+        <div class="feature-card card-accent-green">
+          <div class="feature-icon-box icon-green">
+            <i class="fa-solid fa-couch"></i>
+          </div>
+          <h3 class="feature-title">Rahat Tədris Mühiti</h3>
+          <p class="feature-desc">
+            Müasir texniki laboratoriyalar, azsaylı siniflər və rahat öyrənmə atmosferi.
+          </p>
+        </div>
+
+        <!-- 4. Həftəlik qiymətləndirmə (monitorinq) -->
+        <div class="feature-card card-accent-amber">
+          <div class="feature-icon-box icon-amber">
+            <i class="fa-solid fa-chart-column"></i>
+          </div>
+          <h3 class="feature-title">Həftəlik Qiymətləndirmə</h3>
+          <p class="feature-desc">
+            Tələbənin inkişafının daimi monitorinqi və hər həftə irəliləyişin qeydə alınması.
+          </p>
+        </div>
+
+        <!-- 5. Asan anlaşılan materiallar -->
+        <div class="feature-card card-accent-indigo">
+          <div class="feature-icon-box icon-indigo">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <h3 class="feature-title">Asan Anlaşılan Materiallar</h3>
+          <p class="feature-desc">
+            Mürəkkəb mövzuların sadə, aydın, praktiki və vizual şəkildə izah edilməsi.
+          </p>
+        </div>
+
+        <!-- 6. Motivasiyaedici öyrənmə mühiti -->
+        <div class="feature-card card-accent-rose">
+          <div class="feature-icon-box icon-rose">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <h3 class="feature-title">Motivasiyaedici Mühit</h3>
+          <p class="feature-desc">
+            Tələbənin potensialını üzə çıxaran, maraq və həvəs aşılayan dəstəkləyici kollektiv.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       POPULAR COURSES (Tədris Proqramlarımız - Broşürdəki 6 Kurs)
+       ======================================================== -->
+  <section class="courses-section" id="courses">
+    <div class="courses-container">
+      
+      <!-- Bölmə Başlığı -->
+      <div class="courses-header">
+        <span class="section-tag">TƏDRİS PROQRAMLARI</span>
+        <h2 class="section-heading">Tədris İstiqamətlərimiz</h2>
+        <a href="register.html" class="btn-view-all">Qeydiyyatdan Keç</a>
+      </div>
+
+      <!-- 6 Kurs Kartı (Broşürdəki dəqiq təsvirlərlə, saxta reytinq və qiymət olmadan) -->
+      <div class="courses-grid">
+        
+        <!-- Kurs 1: Full-stack Proqramlaşdırma (AI ilə) -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=700&q=80" alt="Full-stack Proqramlaşdırma">
+            <div class="course-thumb-overlay">
+              <div class="course-tech-badge" style="color: #5D5FEF;">
+                <i class="fa-solid fa-code"></i>
+              </div>
+            </div>
+          </div>
+          <div class="course-body">
+            <span class="course-category cat-purple">Karyera & Bootcamp</span>
+            <h3 class="course-title">Full-stack Proqramlaşdırma (AI ilə)</h3>
+            <p class="course-desc">
+              Sıfırdan AI funksiyaları olan tam veb tətbiq qurmaq və canlıya çıxarmaq.
+            </p>
+            <div class="course-meta">
+              <span><i class="fa-regular fa-calendar-check"></i> B.ertəsi - Cümə / Şənbə</span>
+              <span><i class="fa-solid fa-layer-group"></i> 100% Praktiki</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-status">
+                <span class="status-dot"></span> Qeydiyyat Açıqdır
+              </span>
+              <a href="register.html" class="btn-course-apply">
+                Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurs 2: Mobil Proqramlaşdırma -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=700&q=80" alt="Mobil Proqramlaşdırma">
+            <div class="course-thumb-overlay">
+              <div class="course-tech-badge" style="color: #2563EB;">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+            </div>
+          </div>
+          <div class="course-body">
+            <span class="course-category cat-blue">Mobil & Backend</span>
+            <h3 class="course-title">Mobil Proqramlaşdırma</h3>
+            <p class="course-desc">
+              Android və iOS üçün mobil tətbiq və onun C# serverini yazmaq.
+            </p>
+            <div class="course-meta">
+              <span><i class="fa-regular fa-calendar-check"></i> B.ertəsi - Cümə / Şənbə</span>
+              <span><i class="fa-solid fa-layer-group"></i> 100% Praktiki</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-status">
+                <span class="status-dot"></span> Qeydiyyat Açıqdır
+              </span>
+              <a href="register.html" class="btn-course-apply">
+                Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurs 3: Data Science -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=700&q=80" alt="Data Science">
+            <div class="course-thumb-overlay">
+              <div class="course-tech-badge" style="color: #6366F1;">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+            </div>
+          </div>
+          <div class="course-body">
+            <span class="course-category cat-purple">Süni İntellekt & ML</span>
+            <h3 class="course-title">Data Science</h3>
+            <p class="course-desc">
+              Datanı Python ilə təhlil etmək, ML modeli qurub API kimi təqdim etmək.
+            </p>
+            <div class="course-meta">
+              <span><i class="fa-regular fa-calendar-check"></i> B.ertəsi - Cümə / Şənbə</span>
+              <span><i class="fa-solid fa-layer-group"></i> 100% Praktiki</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-status">
+                <span class="status-dot"></span> Qeydiyyat Açıqdır
+              </span>
+              <a href="register.html" class="btn-course-apply">
+                Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurs 4: Data Analitika -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80" alt="Data Analitika">
+            <div class="course-thumb-overlay">
+              <div class="course-tech-badge" style="color: #059669;">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+            </div>
+          </div>
+          <div class="course-body">
+            <span class="course-category cat-emerald">Analitika & BI</span>
+            <h3 class="course-title">Data Analitika</h3>
+            <p class="course-desc">
+              Datanı SQL ilə çəkmək, modelləşdirmək və Power BI dashboard-u qurmaq.
+            </p>
+            <div class="course-meta">
+              <span><i class="fa-regular fa-calendar-check"></i> B.ertəsi - Cümə / Şənbə</span>
+              <span><i class="fa-solid fa-layer-group"></i> 100% Praktiki</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-status">
+                <span class="status-dot"></span> Qeydiyyat Açıqdır
+              </span>
+              <a href="register.html" class="btn-course-apply">
+                Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurs 5: Web for Kids -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80" alt="Web for Kids">
+            <div class="course-thumb-overlay">
+              <div class="course-tech-badge" style="color: #D97706;">
+                <i class="fa-solid fa-gamepad"></i>
+              </div>
+            </div>
+          </div>
+          <div class="course-body">
+            <span class="course-category cat-amber">Uşaq və Yeniyetmələr</span>
+            <h3 class="course-title">Web for Kids</h3>
+            <p class="course-desc">
+              Uşaqlar üçün öz saytını, oyununu və viktorinasını yaratmaq.
+            </p>
+            <div class="course-meta">
+              <span><i class="fa-regular fa-calendar-check"></i> Həftəiçi / Şənbə</span>
+              <span><i class="fa-solid fa-child-reaching"></i> Uşaqlar üçün</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-status">
+                <span class="status-dot"></span> Qeydiyyat Açıqdır
+              </span>
+              <a href="register.html" class="btn-course-apply">
+                Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurs 6: IT Biznes Analitika -->
+        <div class="course-card">
+          <div class="course-thumb">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80" alt="IT Biznes Analitika">
+            <div class="course-thumb-overlay">
+              <div class="course-tech-badge" style="color: #DB2777;">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+            </div>
+          </div>
+          <div class="course-body">
+            <span class="course-category cat-rose">Biznes & İT</span>
+            <h3 class="course-title">IT Biznes Analitika</h3>
+            <p class="course-desc">
+              Biznes tələbini toplamaq, modelləşdirmək və tam texniki tapşırıq yazmaq.
+            </p>
+            <div class="course-meta">
+              <span><i class="fa-regular fa-calendar-check"></i> B.ertəsi - Cümə / Şənbə</span>
+              <span><i class="fa-solid fa-layer-group"></i> 100% Praktiki</span>
+            </div>
+            <div class="course-footer">
+              <span class="course-status">
+                <span class="status-dot"></span> Qeydiyyat Açıqdır
+              </span>
+              <a href="register.html" class="btn-course-apply">
+                Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       İMKANLARIMIZ BAR SECTION (Broşürdəki 4 Real İmkan - Saxta rəqəmsiz)
+       ======================================================== -->
+  <section class="stats-bar-section">
+    <div class="stats-bar-container">
+      <div class="stats-bar-box">
+
+        <!-- 1. Tələbə Web Hesabı -->
+        <div class="stat-bar-item">
+          <div class="stat-bar-icon icon-purple">
+            <i class="fa-solid fa-laptop"></i>
+          </div>
+          <div class="stat-bar-text">
+            <span class="stat-bar-number" style="font-size: 18px;">Tələbə Web Hesabı</span>
+            <span class="stat-bar-label">Şəxsi Onlayn Kabinet</span>
+          </div>
+        </div>
+
+        <div class="stat-bar-divider"></div>
+
+        <!-- 2. Ödənişsiz Konsultasiya -->
+        <div class="stat-bar-item">
+          <div class="stat-bar-icon icon-slate">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <div class="stat-bar-text">
+            <span class="stat-bar-number" style="font-size: 18px;">Ödənişsiz Konsultasiya</span>
+            <span class="stat-bar-label">Düzgün İxtisas Seçimi</span>
+          </div>
+        </div>
+
+        <div class="stat-bar-divider"></div>
+
+        <!-- 3. Valideyn Gözləmə Zalı -->
+        <div class="stat-bar-item">
+          <div class="stat-bar-icon icon-gold">
+            <i class="fa-solid fa-couch"></i>
+          </div>
+          <div class="stat-bar-text">
+            <span class="stat-bar-number" style="font-size: 18px;">Valideyn Gözləmə Zalı</span>
+            <span class="stat-bar-label">Rahat Gözləmə Mühiti</span>
+          </div>
+        </div>
+
+        <div class="stat-bar-divider"></div>
+
+        <!-- 4. Ödənişsiz Sınaq Dərsi -->
+        <div class="stat-bar-item">
+          <div class="stat-bar-icon icon-blue">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <div class="stat-bar-text">
+            <span class="stat-bar-number" style="font-size: 18px;">Ödənişsiz Sınaq Dərsi</span>
+            <span class="stat-bar-label">İlk Dərs Tam Pulsuz</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       HAQQIMIZDA, MİSSİYA VƏ VİZYON (Şəkildəki 3-lü Kart Dizaynında Real Məlumatlar)
+       ======================================================== -->
+  <section class="testimonials-section" id="about">
+    <div class="testimonials-container">
+      
+      <span class="section-tag">AKADEMİYA HAQQINDA</span>
+      <h2 class="section-heading">Missiyamız, Vizyonumuz və Tədris Yanaşmamız</h2>
+
+      <div class="testimonials-grid" id="testimonials-grid">
+
+        <!-- Kart 1: Akademiya Haqqında -->
+        <div class="testimonial-card" id="review-card-1">
+          <div class="testimonial-top">
+            <span class="quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+            <p class="testimonial-text" id="review-text-1">
+              "Kodlaşdırma sadəcə texniki bacarıq deyil — mürəkkəb problemləri həll etmə vərdişi, analitik təfəkkür və gələcəyi qurmaq vasitəsidir."
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="testimonial-author">
+              <div class="author-avatar-placeholder" id="review-icon-1">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <div class="author-info">
+                <span class="author-name" id="review-name-1">Akademiya Haqqında</span>
+                <span class="author-role" id="review-role-1">Altensor Academy — Lənkəran</span>
+              </div>
+            </div>
+            <div class="testimonial-stars">
+              <span style="font-size: 12px; font-weight: 700; color: #5D5FEF; background: #EEF2FF; padding: 4px 10px; border-radius: 6px;">Rəsmi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 2: Missiyamız -->
+        <div class="testimonial-card" id="review-card-2">
+          <div class="testimonial-top">
+            <span class="quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+            <p class="testimonial-text" id="review-text-2">
+              "Yüksək keyfiyyətli və interaktiv kompüter təhsili təqdim etmək, müsbət öyrənmə mühiti yaratmaq və şagirdlərin analitik təfəkkür bacarıqlarını inkişaf etdirmək."
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="testimonial-author">
+              <div class="author-avatar-placeholder" id="review-icon-2">
+                <i class="fa-solid fa-bullseye"></i>
+              </div>
+              <div class="author-info">
+                <span class="author-name" id="review-name-2">Missiyamız</span>
+                <span class="author-role" id="review-role-2">Praktiki və Müasir Təhsil</span>
+              </div>
+            </div>
+            <div class="testimonial-stars">
+              <span style="font-size: 12px; font-weight: 700; color: #5D5FEF; background: #EEF2FF; padding: 4px 10px; border-radius: 6px;">Hədəf</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 3: Vizyonumuz -->
+        <div class="testimonial-card" id="review-card-3">
+          <div class="testimonial-top">
+            <span class="quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+            <p class="testimonial-text" id="review-text-3">
+              "Şagirdlərin parlaq gələcək üçün akademik üstünlük, özünəinam və tənqidi təfəkkür bacarıqlarını inkişaf etdirmələrinə kömək edən, etibarlı və ilhamverici tədris mərkəzinə çevrilmək."
+            </p>
+          </div>
+          <div class="testimonial-footer">
+            <div class="testimonial-author">
+              <div class="author-avatar-placeholder" id="review-icon-3">
+                <i class="fa-solid fa-lightbulb"></i>
+              </div>
+              <div class="author-info">
+                <span class="author-name" id="review-name-3">Vizyonumuz</span>
+                <span class="author-role" id="review-role-3">Gələcəyin İT Mütəxəssisləri</span>
+              </div>
+            </div>
+            <div class="testimonial-stars">
+              <span style="font-size: 12px; font-weight: 700; color: #5D5FEF; background: #EEF2FF; padding: 4px 10px; border-radius: 6px;">Vizyon</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slider Dots -->
+      <div class="testimonial-dots" id="testimonialDots">
+        <button type="button" class="dot active" data-slide="0" aria-label="Səhifə 1"></button>
+        <button type="button" class="dot" data-slide="1" aria-label="Səhifə 2"></button>
+        <button type="button" class="dot" data-slide="2" aria-label="Səhifə 3"></button>
+        <button type="button" class="dot" data-slide="3" aria-label="Səhifə 4"></button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER SECTION (Support sütunu olmadan - 3 Sütunlu)
+       ======================================================== -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      
+      <div class="footer-top">
+        
+        <!-- 1. Sol Sütun: Loqo, Qısa Mətn və Sosial Şəbəkələr -->
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <img src="assets/images/logo.png" alt="Altensor Academy" class="main-logo-img">
+            <div class="brand-name">
+              Altensor<span>Academy</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Yüksək keyfiyyətli və praktiki tədrislə gələcəyin süni intellekt və proqramlaşdırma mütəxəssislərini yetişdiririk.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-circle" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- 2. Orta Sütun: Sürətli Keçidlər (Quick Links) -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Sürətli Keçidlər</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Ana Səhifə</a></li>
+            <li><a href="#courses">Tədris Proqramları</a></li>
+            <li><a href="#about">Haqqımızda</a></li>
+            <li><a href="#why-us">Üstünlüklərimiz</a></li>
+            <li><a href="#teachers">Müəllimlər</a></li>
+            <li><a href="#contact">Əlaqə</a></li>
+          </ul>
+        </div>
+
+        <!-- 3. Sağ Sütun: Bizimlə Əlaqə (Contact Us) -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Bizimlə Əlaqə</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <a href="mailto:elvinmuzaffarli@gmail.com">elvinmuzaffarli@gmail.com</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+994104727578">+994 10 472 75 78</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Məmməd Əmin Rəsulzadə küç., 40A,<br>Lənkəran 0042</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Alt Müəllif Hüquqları Zolağı -->
+      <div class="footer-bottom">
+        <p class="copyright-text">© 2026 Altensor Academy. Bütün hüquqlar qorunur.</p>
+        <div class="footer-bottom-links">
+          <a href="#">İstifadə Şərtləri</a>
+          <a href="#">Məxfilik Siyasəti</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Slider Dots (Broşürdəki rəsmi məlumatları 4 səhifədə növbə ilə göstərir)
+    const testimonialDots = document.querySelectorAll('#testimonialDots .dot');
+    const testimonialsGrid = document.getElementById('testimonials-grid');
+
+    window.allReviews = [
+      // Səhifə 1 (1-ci nöqtə: Haqqımızda, Missiya, Vizyon)
+      {
+        comment: '"Kodlaşdırma sadəcə texniki bacarıq deyil — mürəkkəb problemləri həll etmə vərdişi, analitik təfəkkür və gələcəyi qurmaq vasitəsidir."',
+        studentName: 'Akademiya Haqqında',
+        courseName: 'Altensor Academy — Lənkəran',
+        icon: 'fa-solid fa-building-columns'
+      },
+      {
+        comment: '"Yüksək keyfiyyətli və interaktiv kompüter təhsili təqdim etmək, müsbət öyrənmə mühiti yaratmaq və şagirdlərin analitik təfəkkür bacarıqlarını inkişaf etdirmək."',
+        studentName: 'Missiyamız',
+        courseName: 'Praktiki və Müasir Təhsil',
+        icon: 'fa-solid fa-bullseye'
+      },
+      {
+        comment: '"Şagirdlərin parlaq gələcək üçün akademik üstünlük, özünəinam və tənqidi təfəkkür bacarıqlarını inkişaf etdirmələrinə kömək edən, etibarlı və ilhamverici tədris mərkəzinə çevrilmək."',
+        studentName: 'Vizyonumuz',
+        courseName: 'Gələcəyin İT Mütəxəssisləri',
+        icon: 'fa-solid fa-lightbulb'
+      },
+      // Səhifə 2 (2-ci nöqtə: Dərs Prosesimiz)
+      {
+        comment: '"Şagirdlər prosesdən zövq aldıqda öyrənmək daha asan olur. Dərslərimiz interaktiv və motivasiyaedici mühitdə keçirilir."',
+        studentName: 'Tədris Fəlsəfəmiz',
+        courseName: 'Motivasiyaedici Mühit',
+        icon: 'fa-solid fa-sparkles'
+      },
+      {
+        comment: '"Hər həftə keçirilən dərslər üzrə qiymətləndirmə (monitorinq) aparılır və tələbənin inkişafı şəxsi web hesab üzərindən izlənilir."',
+        studentName: 'Həftəlik Monitorinq',
+        courseName: 'Keyfiyyətə Nəzarət',
+        icon: 'fa-solid fa-chart-simple'
+      },
+      {
+        comment: '"Dərslər həftəiçi (Bazar ertəsi – Cümə) və həftəsonu (Şənbə) növbəli cədvəl əsasında kiçik qruplarda tədris olunur."',
+        studentName: 'Dərs Cədvəli',
+        courseName: 'Rahat Qrafik Seçimi',
+        icon: 'fa-solid fa-calendar-check'
+      },
+      // Səhifə 3 (3-cü nöqtə: İmkanlarımız)
+      {
+        comment: '"Hər bir tələbə üçün fərdi web hesab yaradılır — dərs materialları, tapşırıqlar və həftəlik nəticələr bir vahid platformada toplanır."',
+        studentName: 'Tələbə Web Hesabı',
+        courseName: 'Rəqəmsal Kabinet',
+        icon: 'fa-solid fa-laptop'
+      },
+      {
+        comment: '"Övladlarını dərsə gətirən valideynlər üçün akademiyamızda xüsusi və rahat valideyn gözləmə zalı fəaliyyət göstərir."',
+        studentName: 'Valideyn Gözləmə Zalı',
+        courseName: 'Rahat Gözləmə Mühiti',
+        icon: 'fa-solid fa-couch'
+      },
+      {
+        comment: '"İxtisas seçimində çətinlik çəkən gənclər və valideynlər üçün mütəxəssislərimiz tərəfindən ödənişsiz konsultasiya və sınaq dərsi keçirilir."',
+        studentName: 'Pulsuz Konsultasiya & Sınaq',
+        courseName: 'Düzgün Karyera İstiqaməti',
+        icon: 'fa-solid fa-comments'
+      },
+      // Səhifə 4 (4-cü nöqtə: Karyera və Portfolio)
+      {
+        comment: '"Tədris müddətində tələbələr real layihələr hazırlayaraq öz GitHub və şəxsi portfoliolarını formalaşdırırlar."',
+        studentName: 'Real Layihə & Portfolio',
+        courseName: '100% Praktiki Təcrübə',
+        icon: 'fa-solid fa-code-branch'
+      },
+      {
+        comment: '"Süni intellekt alətlərinin proqramlaşdırma və analitikada tətbiqi bütün tədris proqramlarımızın əsas hissəsidir."',
+        studentName: 'Süni İntellekt İnteqrasiyası',
+        courseName: 'AI Əsaslı Tədris',
+        icon: 'fa-solid fa-microchip'
+      },
+      {
+        comment: '"Tədris proqramını uğurla tamamlayan tələbələrə Altensor Academy tərəfindən rəsmi sertifikat təqdim olunur."',
+        studentName: 'Rəsmi Sertifikat',
+        courseName: 'Tədris Yekunu',
+        icon: 'fa-solid fa-award'
+      }
+    ];
+
+    function renderReviewsSlide(slideIndex) {
+      if (!testimonialsGrid) return;
+      testimonialsGrid.style.opacity = '0.35';
+      testimonialsGrid.style.transform = 'translateY(6px)';
+
+      setTimeout(() => {
+        const start = slideIndex * 3;
+        for (let i = 0; i < 3; i++) {
+          const review = window.allReviews[start + i];
+          const textEl = document.getElementById(`review-text-${i + 1}`);
+          const nameEl = document.getElementById(`review-name-${i + 1}`);
+          const roleEl = document.getElementById(`review-role-${i + 1}`);
+          const iconWrapEl = document.getElementById(`review-icon-${i + 1}`);
+
+          if (review) {
+            if (textEl) textEl.textContent = review.comment;
+            if (nameEl) nameEl.textContent = review.studentName;
+            if (roleEl) roleEl.textContent = review.courseName;
+            if (iconWrapEl && review.icon) {
+              iconWrapEl.innerHTML = `<i class="${review.icon}"></i>`;
+            }
+          }
+        }
+        testimonialsGrid.style.opacity = '1';
+        testimonialsGrid.style.transform = 'translateY(0)';
+      }, 180);
+    }
+
+    testimonialDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        testimonialDots.forEach((d) => d.classList.remove('active'));
+        dot.classList.add('active');
+        const slideIndex = Number(dot.getAttribute('data-slide') || 0);
+        renderReviewsSlide(slideIndex);
+      });
+    });
+
+    // "Niyə Bizim Akademiya?" kartları üçün zərif interaktiv Spotlight və 3D Tilt animasiyası
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -3.5;
+        const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 3.5;
+        card.style.transform = `translateY(-7px) perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  </script>
+</body>
+</html>
