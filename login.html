@@ -217,6 +217,109 @@
         .back-home:hover {
             color: var(--text-white);
         }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: var(--text-white);
+        }
+
+        .input-wrapper input[type="password"].form-control,
+        .input-wrapper input.has-eye {
+            padding-right: 42px;
+        }
+
+        .forgot-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -10px;
+            margin-bottom: 18px;
+        }
+
+        .forgot-link {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 0;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .forgot-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 8, 22, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .forgot-modal-overlay.open {
+            display: flex;
+        }
+
+        .forgot-modal-box {
+            width: 100%;
+            max-width: 440px;
+            background: #0F172A;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 22px;
+            padding: 30px 26px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .forgot-modal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+
+        .forgot-modal-head h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .forgot-modal-close {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-white);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .forgot-modal-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -247,8 +350,15 @@
                 <label for="password">Şifrə</label>
                 <div class="input-wrapper">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                    <input type="password" id="password" class="form-control has-eye" placeholder="••••••••" required>
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password', this)" aria-label="Şifrəni göstər">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
                 </div>
+            </div>
+
+            <div class="forgot-row">
+                <button type="button" class="forgot-link" onclick="openForgotModal()">Şifrəni unutdum?</button>
             </div>
 
             <button type="submit" id="submitBtn" class="btn-submit">
@@ -265,7 +375,74 @@
         </div>
     </div>
 
-    <script src="js/config.js"></script>
+    <!-- FORGOT PASSWORD MODAL -->
+    <div id="forgotModal" class="forgot-modal-overlay">
+        <div class="forgot-modal-box">
+            <div class="forgot-modal-head">
+                <h3>Şifrəni Bərpa Et</h3>
+                <button type="button" class="forgot-modal-close" onclick="closeForgotModal()" aria-label="Bağla">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="forgotAlertBox" class="alert-box"></div>
+
+            <form id="forgotStep1Form">
+                <p class="forgot-modal-desc">
+                    Qeydiyyatdan keçdiyiniz e-poçt ünvanını yazın. Sizə 6 rəqəmli təsdiq kodu göndəriləcək.
+                </p>
+                <div class="form-group">
+                    <label for="forgotEmail">E-poçt ünvanı</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" id="forgotEmail" class="form-control" placeholder="nümunə@mail.com" required>
+                    </div>
+                </div>
+                <button type="submit" id="forgotStep1Btn" class="btn-submit">
+                    <span>Təsdiq Kodu Göndər</span>
+                    <i class="fa-regular fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <form id="forgotStep2Form" style="display:none;">
+                <p class="forgot-modal-desc">
+                    E-poçtunuza göndərilən 6 rəqəmli kodu və yeni şifrənizi daxil edin.
+                </p>
+                <div class="form-group">
+                    <label for="resetCode">6 Rəqəmli Təsdiq Kodu</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="text" id="resetCode" class="form-control" placeholder="123456" maxlength="6" pattern="\d{6}" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resetNewPassword">Yeni Şifrə</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="resetNewPassword" class="form-control has-eye" placeholder="Ən azı 6 simvol" minlength="6" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('resetNewPassword', this)" aria-label="Şifrəni göstər">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="resetConfirmPassword">Yeni Şifrə Təkrarı</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="resetConfirmPassword" class="form-control has-eye" placeholder="Şifrəni təkrarlayın" minlength="6" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('resetConfirmPassword', this)" aria-label="Şifrəni göstər">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" id="forgotStep2Btn" class="btn-submit">
+                    <span>Şifrəni Yenilə</span>
+                    <i class="fa-solid fa-check"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/config.js?v=2"></script>
     <script>
         const loginForm = document.getElementById("loginForm");
         const alertBox = document.getElementById("alertBox");
@@ -317,6 +494,120 @@
                 showAlert("Serverlə əlaqə yaratmaq mümkün olmadı. Backend-in işlədiyindən əmin olun.");
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<span>Daxil Ol</span><i class="fa-solid fa-arrow-right"></i>';
+            }
+        });
+
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isHidden = input.type === "password";
+            input.type = isHidden ? "text" : "password";
+            btn.innerHTML = isHidden
+                ? '<i class="fa-regular fa-eye-slash"></i>'
+                : '<i class="fa-regular fa-eye"></i>';
+        }
+
+        const forgotModal = document.getElementById("forgotModal");
+        const forgotAlertBox = document.getElementById("forgotAlertBox");
+        const forgotStep1Form = document.getElementById("forgotStep1Form");
+        const forgotStep2Form = document.getElementById("forgotStep2Form");
+        let pendingResetEmail = "";
+
+        function showForgotAlert(msg, isSuccess = false) {
+            forgotAlertBox.textContent = msg;
+            forgotAlertBox.className = "alert-box " + (isSuccess ? "alert-success" : "alert-error");
+            forgotAlertBox.style.display = "block";
+        }
+
+        function openForgotModal() {
+            forgotAlertBox.style.display = "none";
+            forgotStep1Form.reset();
+            forgotStep2Form.reset();
+            forgotStep1Form.style.display = "block";
+            forgotStep2Form.style.display = "none";
+            const typedEmail = document.getElementById("email").value.trim();
+            if (typedEmail) document.getElementById("forgotEmail").value = typedEmail;
+            forgotModal.classList.add("open");
+        }
+
+        function closeForgotModal() {
+            forgotModal.classList.remove("open");
+        }
+
+        forgotModal.addEventListener("click", (e) => {
+            if (e.target === forgotModal) closeForgotModal();
+        });
+
+        forgotStep1Form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            forgotAlertBox.style.display = "none";
+            const btn = document.getElementById("forgotStep1Btn");
+            pendingResetEmail = document.getElementById("forgotEmail").value.trim();
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Göndərilir...';
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: pendingResetEmail })
+                });
+                const data = await res.json();
+                if (!res.ok || !data.succeeded) {
+                    showForgotAlert(data.message || "Xəta baş verdi.");
+                } else {
+                    showForgotAlert(data.message, true);
+                    forgotStep1Form.style.display = "none";
+                    forgotStep2Form.style.display = "block";
+                }
+            } catch {
+                showForgotAlert("Serverlə əlaqə yaratmaq mümkün olmadı.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Təsdiq Kodu Göndər</span><i class="fa-regular fa-paper-plane"></i>';
+            }
+        });
+
+        forgotStep2Form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            forgotAlertBox.style.display = "none";
+            const code = document.getElementById("resetCode").value.trim();
+            const newPassword = document.getElementById("resetNewPassword").value;
+            const confirmNewPassword = document.getElementById("resetConfirmPassword").value;
+
+            if (newPassword !== confirmNewPassword) {
+                showForgotAlert("Şifrələr bir-birinə uyğun gəlmir!");
+                return;
+            }
+
+            const btn = document.getElementById("forgotStep2Btn");
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Yenilənir...';
+
+            try {
+                const res = await fetch(`${API_BASE_URL}/auth/reset-password`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        email: pendingResetEmail,
+                        code,
+                        newPassword,
+                        confirmNewPassword
+                    })
+                });
+                const data = await res.json();
+                if (!res.ok || !data.succeeded) {
+                    showForgotAlert(data.message || "Kod yanlışdır və ya müddəti bitib.");
+                } else {
+                    closeForgotModal();
+                    document.getElementById("email").value = pendingResetEmail;
+                    showAlert(data.message || "Şifrəniz uğurla yeniləndi!", true);
+                }
+            } catch {
+                showForgotAlert("Serverlə əlaqə yaratmaq mümkün olmadı.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Şifrəni Yenilə</span><i class="fa-solid fa-check"></i>';
             }
         });
     </script>

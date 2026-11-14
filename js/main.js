@@ -224,25 +224,40 @@ function updateNavbarAuthUI() {
     const user = getCurrentUser();
 
     if (token && user) {
+        const searchBtnHtml = `
+            <button class="btn-search" aria-label="Axtarış" title="Axtarış">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        `;
+        const mobileBtnHtml = `
+            <button class="mobile-menu-btn" aria-label="Menyu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        `;
+
         if (user.role === "Admin") {
             navActions.innerHTML = `
+                ${searchBtnHtml}
                 <a href="admin.html" class="btn-signup" style="background: linear-gradient(135deg, #10B981, #059669); gap: 8px;">
                     <i class="fa-solid fa-gauge-high"></i> Admin Panel
                 </a>
                 <button onclick="logoutUser()" class="link-login" style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 18px; border-radius: 9px; cursor: pointer; color: #F87171; font-weight: 700; white-space: nowrap;">
                     Çıxış
                 </button>
+                ${mobileBtnHtml}
             `;
         } else {
             const displayName = escapeHtml(user.fullName || user.email);
             navActions.innerHTML = `
-                <span style="font-weight: 600; color: #FFFFFF; font-size: 14px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.06); padding: 9px 14px; border-radius: 9px; border: 1px solid rgba(255,255,255,0.1);">
+                ${searchBtnHtml}
+                <a href="profile.html" title="Profilim və Müraciətlərim" style="text-decoration: none; font-weight: 600; color: #FFFFFF; font-size: 14px; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; background: rgba(93, 95, 239, 0.16); padding: 9px 14px; border-radius: 9px; border: 1px solid rgba(129, 140, 248, 0.35); transition: all 0.2s;">
                     <i class="fa-regular fa-circle-user" style="color: #818CF8;"></i>
                     ${displayName}
-                </span>
+                </a>
                 <button onclick="logoutUser()" class="link-login" style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); padding: 10px 18px; border-radius: 9px; cursor: pointer; color: #F87171; font-weight: 700; white-space: nowrap;">
                     Çıxış
                 </button>
+                ${mobileBtnHtml}
             `;
         }
     }

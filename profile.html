@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profilim | Altensor Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <style>
+    .profile-hero {
+      background: linear-gradient(135deg, #090E25 0%, #111936 100%);
+      color: #FFFFFF;
+      padding: 48px 24px 64px;
+    }
+
+    .profile-hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .profile-hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .profile-hero p {
+      color: #94A3B8;
+      font-size: 1rem;
+    }
+
+    .profile-main {
+      background: #F8FAFC;
+      padding: 0 24px 72px;
+      min-height: 55vh;
+    }
+
+    .profile-grid {
+      max-width: 1180px;
+      margin: -34px auto 0;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .profile-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .profile-avatar-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #E2E8F0;
+      margin-bottom: 20px;
+    }
+
+    .profile-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #5D5FEF, #4338CA);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .profile-avatar-box h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+
+    .profile-role-pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #EEF2FF;
+      color: #4338CA;
+    }
+
+    .profile-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .profile-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .profile-info-item span {
+      font-size: 0.78rem;
+      color: #64748B;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .profile-info-item strong {
+      font-size: 0.96rem;
+      color: #0F172A;
+      word-break: break-word;
+    }
+
+    .apps-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .apps-card-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0F172A;
+    }
+
+    .apps-table-wrap {
+      overflow-x: auto;
+    }
+
+    .apps-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .apps-table th,
+    .apps-table td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid #E2E8F0;
+      font-size: 0.93rem;
+    }
+
+    .apps-table th {
+      color: #64748B;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .apps-table td {
+      color: #0F172A;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-pending {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+
+    .status-approved {
+      background: #DCFCE7;
+      color: #15803D;
+    }
+
+    .status-cancelled {
+      background: #FEE2E2;
+      color: #B91C1C;
+    }
+
+    .empty-apps {
+      text-align: center;
+      padding: 40px 16px;
+      color: #64748B;
+    }
+
+    .empty-apps i {
+      font-size: 2.2rem;
+      color: #CBD5E1;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .profile-main {
+        padding: 0 16px 56px;
+      }
+      .profile-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo.png" alt="Altensor Academy" class="main-logo-img">
+        <span class="brand-name">Altensor<span class="brand-accent">Academy</span></span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+        <li class="nav-item-dropdown">
+          <a href="courses.html" class="nav-link">Tədris Proqramları</a>
+          <div class="mega-menu-dropdown">
+            <div class="mega-sidebar" id="megaSidebar">
+              <div class="mega-cat-item active" data-cat="proqramlasdirma">
+                <span>Proqramlaşdırma &amp; AI</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <div class="mega-cat-item" data-cat="mobil">
+                <span>Mobil Proqramlaşdırma</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <div class="mega-cat-item" data-cat="datascience">
+                <span>Süni İntellekt &amp; Data Science</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <div class="mega-cat-item" data-cat="analitika">
+                <span>Data Analitika</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <div class="mega-cat-item" data-cat="kids">
+                <span>Uşaqlar Üçün İT</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <div class="mega-cat-item" data-cat="biznes">
+                <span>İT Biznes Analitika</span>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+            </div>
+            <div class="mega-content">
+              <div class="mega-courses-grid" id="megaCoursesGrid"></div>
+              <div class="mega-footer">
+                <span>Bütün tədris sahələri 100% praktiki layihələr üzərində qurulub</span>
+                <a href="courses.html" class="mega-all-link">
+                  Bütün tədris sahələri <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        <li><a href="why-us.html" class="nav-link">Üstünlüklərimiz</a></li>
+        <li><a href="teachers.html" class="nav-link">Müəllimlər</a></li>
+        <li><a href="contact.html" class="nav-link">Əlaqə</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-search" aria-label="Axtarış" title="Axtarış">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="login.html" class="link-login">Daxil Ol</a>
+        <a href="register.html" class="btn-signup">Qeydiyyat</a>
+        <button class="mobile-menu-btn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="profile-hero">
+    <div class="profile-hero-inner">
+      <h1>Şəxsi Profilim</h1>
+      <p>Hesab məlumatlarınız və kurs müraciətlərinizin cari statusu</p>
+    </div>
+  </section>
+
+  <main class="profile-main">
+    <div class="profile-grid">
+      <aside class="profile-card">
+        <div class="profile-avatar-box">
+          <div class="profile-avatar" id="profileInitials">A</div>
+          <div>
+            <h3 id="profileFullName">Yüklənir...</h3>
+            <span class="profile-role-pill" id="profileRoleBadge">Tələbə</span>
+          </div>
+        </div>
+        <div class="profile-info-list">
+          <div class="profile-info-item">
+            <span>E-poçt ünvanı</span>
+            <strong id="profileEmail">-</strong>
+          </div>
+          <div class="profile-info-item">
+            <span>Telefon nömrəsi</span>
+            <strong id="profilePhone">-</strong>
+          </div>
+        </div>
+      </aside>
+
+      <section class="profile-card">
+        <div class="apps-card-header">
+          <h2>Mənim Müraciətlərim</h2>
+          <a href="courses.html" class="btn-signup" style="padding: 9px 16px; font-size: 13.5px;">
+            + Yeni Kursa Müraciət
+          </a>
+        </div>
+
+        <div class="apps-table-wrap">
+          <table class="apps-table">
+            <thead>
+              <tr>
+                <th>Kursun Adı</th>
+                <th>Müraciət Tarixi</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="myApplicationsBody">
+              <tr><td colspan="3">Yüklənir...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <p>&copy; 2026 Altensor Academy. Bütün hüquqlar qorunur.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const token = getToken();
+      if (!token) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      const headers = { "Authorization": `Bearer ${token}` };
+
+      try {
+        const meRes = await fetch(`${API_BASE_URL}/auth/me`, { headers });
+        if (meRes.status === 401) {
+          logoutUser();
+          return;
+        }
+        const me = await meRes.json();
+        const fullName = me.fullName || me.email || "İstifadəçi";
+        document.getElementById("profileFullName").textContent = fullName;
+        document.getElementById("profileInitials").textContent = fullName.trim().charAt(0).toUpperCase();
+        document.getElementById("profileEmail").textContent = me.email || "-";
+        document.getElementById("profilePhone").textContent = me.phoneNumber || "-";
+        document.getElementById("profileRoleBadge").textContent = me.role === "Admin" ? "Admin" : "Tələbə";
+      } catch {
+        const cached = getCurrentUser();
+        if (cached) {
+          document.getElementById("profileFullName").textContent = cached.fullName || cached.email;
+          document.getElementById("profileEmail").textContent = cached.email || "-";
+          document.getElementById("profilePhone").textContent = cached.phoneNumber || "-";
+        }
+      }
+
+      const tbody = document.getElementById("myApplicationsBody");
+      try {
+        const appsRes = await fetch(`${API_BASE_URL}/applications/my`, { headers });
+        if (!appsRes.ok) throw new Error();
+        const list = await appsRes.json();
+
+        if (!Array.isArray(list) || !list.length) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="3">
+                <div class="empty-apps">
+                  <i class="fa-regular fa-folder-open"></i>
+                  <p>Hələ heç bir kursa müraciət etməmisiniz.</p>
+                </div>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = list.map(app => {
+          const statusClass = app.status === 0 ? "status-pending" : (app.status === 1 ? "status-approved" : "status-cancelled");
+          const statusText = app.status === 0 ? "🟡 Gözləmədədir" : (app.status === 1 ? "🟢 Təsdiqləndi" : "🔴 Ləğv edildi");
+          const dateStr = new Date(app.createdAt).toLocaleDateString("az-AZ", {
+            year: "numeric", month: "short", day: "numeric"
+          });
+          return `
+            <tr>
+              <td><strong>${escapeHtml(app.courseName)}</strong></td>
+              <td>${escapeHtml(dateStr)}</td>
+              <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+            </tr>
+          `;
+        }).join("");
+      } catch {
+        tbody.innerHTML = `<tr><td colspan="3" style="color:#DC2626;">Müraciətlər yüklənərkən xəta baş verdi.</td></tr>`;
+      }
+    });
+  </script>
+</body>
+</html>

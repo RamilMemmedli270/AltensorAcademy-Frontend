@@ -220,6 +220,29 @@
             color: var(--text-white);
         }
 
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s;
+        }
+
+        .toggle-password:hover {
+            color: var(--text-white);
+        }
+
+        .input-wrapper input.has-eye {
+            padding-right: 42px;
+        }
+
         @media (max-width: 520px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -282,14 +305,20 @@
                     <label for="password">Şifrə</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="password" class="form-control" placeholder="Ən azı 6 simvol" minlength="6" required>
+                        <input type="password" id="password" class="form-control has-eye" placeholder="Ən azı 6 simvol" minlength="6" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password', this)" aria-label="Şifrəni göstər">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="confirmPassword">Şifrə təkrarı</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" id="confirmPassword" class="form-control" placeholder="Şifrəni təkrarlayın" minlength="6" required>
+                        <input type="password" id="confirmPassword" class="form-control has-eye" placeholder="Şifrəni təkrarlayın" minlength="6" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)" aria-label="Şifrəni göstər">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -308,8 +337,17 @@
         </div>
     </div>
 
-    <script src="js/config.js"></script>
+    <script src="js/config.js?v=2"></script>
     <script>
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isHidden = input.type === "password";
+            input.type = isHidden ? "text" : "password";
+            btn.innerHTML = isHidden
+                ? '<i class="fa-regular fa-eye-slash"></i>'
+                : '<i class="fa-regular fa-eye"></i>';
+        }
         const registerForm = document.getElementById("registerForm");
         const alertBox = document.getElementById("alertBox");
         const submitBtn = document.getElementById("submitBtn");
