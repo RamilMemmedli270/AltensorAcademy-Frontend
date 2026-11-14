@@ -34,12 +34,56 @@
 
       <!-- Center Navigation Menu -->
       <ul class="nav-menu">
-        <li><a href="#home" class="nav-link active">Ana Səhifə</a></li>
-        <li><a href="#courses" class="nav-link">Tədris Proqramları</a></li>
-        <li><a href="#about" class="nav-link">Haqqımızda</a></li>
-        <li><a href="#why-us" class="nav-link">Üstünlüklərimiz</a></li>
-        <li><a href="#teachers" class="nav-link">Müəllimlər</a></li>
-        <li><a href="#contact" class="nav-link">Əlaqə</a></li>
+        <li><a href="index.html" class="nav-link active">Ana Səhifə</a></li>
+        <li class="nav-item-dropdown">
+          <a href="courses.html" class="nav-link">
+            Tədris Proqramları
+          </a>
+          <!-- Mega-Menu Dropdown -->
+          <div class="mega-menu-dropdown" id="megaMenuDropdown">
+            <div class="mega-sidebar" id="megaSidebar">
+              <a href="courses.html?cat=proqramlasdirma" class="mega-cat-item active" data-cat="proqramlasdirma">
+                <span class="mega-cat-title">Proqramlaşdırma & AI</span>
+                <span class="mega-cat-sub">AI funksiyalı tam veb tətbiqlər</span>
+              </a>
+              <a href="courses.html?cat=mobil" class="mega-cat-item" data-cat="mobil">
+                <span class="mega-cat-title">Mobil Proqramlaşdırma</span>
+                <span class="mega-cat-sub">Android/iOS tətbiq və C# server</span>
+              </a>
+              <a href="courses.html?cat=datascience" class="mega-cat-item" data-cat="datascience">
+                <span class="mega-cat-title">Süni İntellekt & Data</span>
+                <span class="mega-cat-sub">Python ilə data təhlili və ML modeli</span>
+              </a>
+              <a href="courses.html?cat=analitika" class="mega-cat-item" data-cat="analitika">
+                <span class="mega-cat-title">Data Analitika</span>
+                <span class="mega-cat-sub">SQL ilə data və Power BI dashboard</span>
+              </a>
+              <a href="courses.html?cat=kids" class="mega-cat-item" data-cat="kids">
+                <span class="mega-cat-title">Uşaqlar Üçün İT</span>
+                <span class="mega-cat-sub">Öz saytını, oyununu və viktorinanı yarat</span>
+              </a>
+              <a href="courses.html?cat=biznes" class="mega-cat-item" data-cat="biznes">
+                <span class="mega-cat-title">İT Biznes Analitika</span>
+                <span class="mega-cat-sub">Biznes tələbi və texniki tapşırıq</span>
+              </a>
+            </div>
+            <div class="mega-content">
+              <div class="mega-courses-grid" id="megaCoursesGrid">
+                <!-- JS ilə dinamik doldurulur -->
+              </div>
+              <div class="mega-footer">
+                <span>Bütün tədris sahələri 100% praktiki layihələr üzərində qurulub</span>
+                <a href="courses.html" class="mega-all-link">
+                  Bütün tədris sahələri <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        <li><a href="why-us.html" class="nav-link">Üstünlüklərimiz</a></li>
+        <li><a href="teachers.html" class="nav-link">Müəllimlər</a></li>
+        <li><a href="contact.html" class="nav-link">Əlaqə</a></li>
       </ul>
 
       <!-- Right Action Items -->
@@ -92,7 +136,7 @@
 
         <!-- Fəaliyyət Düymələri -->
         <div class="hero-actions">
-          <a href="#courses" class="btn-explore">Kursları Kəşf Edin</a>
+          <a href="courses.html" class="btn-explore">Kursları Kəşf Edin</a>
         </div>
 
         <!-- Real Üstünlüklər Zolağı (Saxta rəqəmlər olmadan) -->
@@ -561,7 +605,7 @@
               </div>
               <div class="author-info">
                 <span class="author-name" id="review-name-1">Akademiya Haqqında</span>
-                <span class="author-role" id="review-role-1">Altensor Academy — Lənkəran</span>
+                <span class="author-role" id="review-role-1">Altensor Academy</span>
               </div>
             </div>
             <div class="testimonial-stars">
@@ -654,7 +698,7 @@
             <a href="#" class="social-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="social-circle" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
             <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/altensor.academy?vrfl=MWppcjVxbjloYjBxdg==" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           </div>
         </div>
 
@@ -664,10 +708,10 @@
           <ul class="footer-links">
             <li><a href="#home">Ana Səhifə</a></li>
             <li><a href="#courses">Tədris Proqramları</a></li>
-            <li><a href="#about">Haqqımızda</a></li>
-            <li><a href="#why-us">Üstünlüklərimiz</a></li>
-            <li><a href="#teachers">Müəllimlər</a></li>
-            <li><a href="#contact">Əlaqə</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="why-us.html">Üstünlüklərimiz</a></li>
+            <li><a href="teachers.html">Müəllimlər</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
           </ul>
         </div>
 
@@ -677,7 +721,7 @@
           <ul class="footer-contact-list">
             <li>
               <i class="fa-regular fa-envelope"></i>
-              <a href="mailto:elvinmuzaffarli@gmail.com">elvinmuzaffarli@gmail.com</a>
+              <a href="mailto:info@altensoracademy.com">info@altensoracademy.com</a>
             </li>
             <li>
               <i class="fa-solid fa-phone"></i>
@@ -685,7 +729,7 @@
             </li>
             <li>
               <i class="fa-solid fa-location-dot"></i>
-              <span>Məmməd Əmin Rəsulzadə küç., 40A,<br>Lənkəran 0042</span>
+              <span>Baku, Azərbaycan</span>
             </li>
           </ul>
         </div>
@@ -715,7 +759,7 @@
       {
         comment: '"Kodlaşdırma sadəcə texniki bacarıq deyil — mürəkkəb problemləri həll etmə vərdişi, analitik təfəkkür və gələcəyi qurmaq vasitəsidir."',
         studentName: 'Akademiya Haqqında',
-        courseName: 'Altensor Academy — Lənkəran',
+        courseName: 'Altensor Academy',
         icon: 'fa-solid fa-building-columns'
       },
       {
@@ -846,5 +890,7 @@
       });
     });
   </script>
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

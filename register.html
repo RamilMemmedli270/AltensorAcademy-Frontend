@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qeydiyyat | Altensor Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #090E25;
+            --card-bg: #111936;
+            --primary: #5D5FEF;
+            --accent: #38BDF8;
+            --text-white: #FFFFFF;
+            --text-muted: #94A3B8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(93, 95, 239, 0.2), transparent 45%),
+                        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.15), transparent 45%),
+                        var(--bg-dark);
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 20px;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 540px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px 34px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-white);
+            margin-bottom: 22px;
+        }
+
+        .auth-logo img {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .auth-logo span {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .auth-logo span strong {
+            color: var(--accent);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .auth-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .auth-header p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .alert-box {
+            display: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #FCA5A5;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #6EE7B7;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #E2E8F0;
+            margin-bottom: 7px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-white);
+            font-size: 0.93rem;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            background: rgba(93, 95, 239, 0.08);
+            box-shadow: 0 0 0 3px rgba(93, 95, 239, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), #4338CA);
+            color: var(--text-white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(93, 95, 239, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .auth-footer {
+            margin-top: 22px;
+            text-align: center;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .back-home:hover {
+            color: var(--text-white);
+        }
+
+        @media (max-width: 520px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <a href="index.html" class="auth-logo">
+            <img src="assets/images/logo.png" alt="Altensor Academy">
+            <span>Altensor<strong>Academy</strong></span>
+        </a>
+
+        <div class="auth-header">
+            <h1>Yeni Hesab Yaradın</h1>
+            <p>Qeydiyyatdan keçərək tədris proqramlarımıza müraciət edin</p>
+        </div>
+
+        <div id="alertBox" class="alert-box"></div>
+
+        <form id="registerForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">Ad</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="firstName" class="form-control" placeholder="Adınız" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Soyad</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" id="lastName" class="form-control" placeholder="Soyadınız" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-poçt ünvanı</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" class="form-control" placeholder="nümunə@mail.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Telefon nömrəsi</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="phoneNumber" class="form-control" placeholder="+994 50 000 00 00" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Şifrə</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="password" class="form-control" placeholder="Ən azı 6 simvol" minlength="6" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Şifrə təkrarı</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Şifrəni təkrarlayın" minlength="6" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn-submit">
+                <span>Qeydiyyatdan Keç</span>
+                <i class="fa-solid fa-user-plus"></i>
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Artıq hesabınız var? <a href="login.html">Daxil olun</a></p>
+            <a href="index.html" class="back-home">
+                <i class="fa-solid fa-arrow-left"></i> Ana səhifəyə qayıt
+            </a>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script>
+        const registerForm = document.getElementById("registerForm");
+        const alertBox = document.getElementById("alertBox");
+        const submitBtn = document.getElementById("submitBtn");
+
+        function showAlert(message, isSuccess = false) {
+            alertBox.textContent = message;
+            alertBox.className = "alert-box " + (isSuccess ? "alert-success" : "alert-error");
+            alertBox.style.display = "block";
+        }
+
+        registerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            alertBox.style.display = "none";
+
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phoneNumber = document.getElementById("phoneNumber").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                showAlert("Şifrələr bir-birinə uyğun gəlmir!");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Qeydiyyat aparılır...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        email,
+                        phoneNumber,
+                        password,
+                        confirmPassword
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.succeeded) {
+                    showAlert(data.message || "Qeydiyyat zamanı xəta baş verdi.");
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Qeydiyyatdan Keç</span><i class="fa-solid fa-user-plus"></i>';
+                    return;
+                }
+
+                saveAuthData(data);
+                showAlert("Qeydiyyat uğurla tamamlandı! Ana səhifəyə yönləndirilirsiniz...", true);
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 800);
+            } catch (error) {
+                showAlert("Serverlə əlaqə yaratmaq mümkün olmadı. Backend-in işlədiyindən əmin olun.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Qeydiyyatdan Keç</span><i class="fa-solid fa-user-plus"></i>';
+            }
+        });
+    </script>
+</body>
+</html>

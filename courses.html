@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tədris Proqramları | Altensor Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" title="Altensor Academy">
+        <img src="assets/images/logo.png" alt="Altensor Academy Loqo" class="main-logo-img">
+        <div class="brand-name">
+          Altensor<span>Academy</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+        <li class="nav-item-dropdown">
+          <a href="courses.html" class="nav-link active">
+            Tədris Proqramları
+          </a>
+          <div class="mega-menu-dropdown" id="megaMenuDropdown">
+            <div class="mega-sidebar" id="megaSidebar">
+              <a href="courses.html?cat=proqramlasdirma" class="mega-cat-item active" data-cat="proqramlasdirma">
+                <span class="mega-cat-title">Proqramlaşdırma & AI</span>
+                <span class="mega-cat-sub">AI funksiyalı tam veb tətbiqlər</span>
+              </a>
+              <a href="courses.html?cat=mobil" class="mega-cat-item" data-cat="mobil">
+                <span class="mega-cat-title">Mobil Proqramlaşdırma</span>
+                <span class="mega-cat-sub">Android/iOS tətbiq və C# server</span>
+              </a>
+              <a href="courses.html?cat=datascience" class="mega-cat-item" data-cat="datascience">
+                <span class="mega-cat-title">Süni İntellekt & Data</span>
+                <span class="mega-cat-sub">Python ilə data təhlili və ML modeli</span>
+              </a>
+              <a href="courses.html?cat=analitika" class="mega-cat-item" data-cat="analitika">
+                <span class="mega-cat-title">Data Analitika</span>
+                <span class="mega-cat-sub">SQL ilə data və Power BI dashboard</span>
+              </a>
+              <a href="courses.html?cat=kids" class="mega-cat-item" data-cat="kids">
+                <span class="mega-cat-title">Uşaqlar Üçün İT</span>
+                <span class="mega-cat-sub">Öz saytını, oyununu və viktorinanı yarat</span>
+              </a>
+              <a href="courses.html?cat=biznes" class="mega-cat-item" data-cat="biznes">
+                <span class="mega-cat-title">İT Biznes Analitika</span>
+                <span class="mega-cat-sub">Biznes tələbi və texniki tapşırıq</span>
+              </a>
+            </div>
+            <div class="mega-content">
+              <div class="mega-courses-grid" id="megaCoursesGrid"></div>
+              <div class="mega-footer">
+                <span>Bütün tədris sahələri 100% praktiki layihələr üzərində qurulub</span>
+                <a href="courses.html" class="mega-all-link">
+                  Bütün tədris sahələri <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        <li><a href="why-us.html" class="nav-link">Üstünlüklərimiz</a></li>
+        <li><a href="teachers.html" class="nav-link">Müəllimlər</a></li>
+        <li><a href="contact.html" class="nav-link">Əlaqə</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-search" aria-label="Axtarış" title="Axtarış">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="login.html" class="link-login">Daxil Ol</a>
+        <a href="register.html" class="btn-signup">Qeydiyyat</a>
+        <button class="mobile-menu-btn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO & SEARCH -->
+  <section class="courses-page-hero">
+    <div class="courses-hero-inner">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Ana Səhifə</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+        <span>Tədris Proqramları</span>
+      </div>
+
+      <div class="courses-hero-top">
+        <div>
+          <h1 class="courses-hero-title">
+            Gələcəyin Peşələrinə Aparıcı <span>Tədris Proqramları</span>
+          </h1>
+          <p class="courses-hero-sub">
+            Altensor Academy-də bütün proqramlar 100% praktika, real layihələr və süni intellekt dəstəkli müasir metodika əsasında kiçik qruplarda tədris olunur.
+          </p>
+        </div>
+
+        <div class="courses-search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="courseSearchInput" class="courses-search-input" placeholder="Kurs və ya texnologiya axtar (məs: Python, AI)...">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TƏDRİS SAHƏLƏRİ (Rəngli Kartlar + Oval Filtrlər) -->
+  <section class="study-fields-section">
+    <div class="study-fields-container">
+      <h2 class="study-fields-title">Tədris sahələri</h2>
+
+      <div class="filter-pills-row" id="categoryFilters">
+        <button type="button" class="filter-pill-btn active" data-filter="all">Hamısı</button>
+        <button type="button" class="filter-pill-btn" data-filter="proqramlasdirma">Proqramlaşdırma & AI</button>
+        <button type="button" class="filter-pill-btn" data-filter="mobil">Mobil Proqramlaşdırma</button>
+        <button type="button" class="filter-pill-btn" data-filter="datascience">Süni İntellekt & Data Science</button>
+        <button type="button" class="filter-pill-btn" data-filter="analitika">Data Analitika</button>
+        <button type="button" class="filter-pill-btn" data-filter="kids">Uşaqlar Üçün İT</button>
+        <button type="button" class="filter-pill-btn" data-filter="biznes">İT Biznes Analitika</button>
+      </div>
+
+      <div class="study-fields-grid" id="studyFieldsGrid">
+        <!-- JS tərəfindən dinamik render edilir -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TƏHSİL MODELİMİZ -->
+  <section class="edu-model-section">
+    <div class="study-fields-container">
+      <span class="section-tag">TƏHSİL MODELİ</span>
+      <h2 class="study-fields-title" style="margin-bottom: 10px;">Altensor Academy Tədris Yanaşması</h2>
+      <p style="color:#475569; max-width:680px; font-size:15.5px; line-height:1.6;">
+        Tələbələrimiz təkcə nəzəri biliklər deyil, real iş mühitində tələb olunan praktiki bacarıqlar və layihə təcrübəsi qazanırlar.
+      </p>
+
+      <div class="edu-model-grid">
+        <div class="edu-model-card">
+          <div class="edu-model-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h4>100% Praktiki Metodika</h4>
+          <p>Hər dərs nəzəriyyə dərhal real kodlaşdırma tapşırıqları və praktiki lab məşğələləri ilə möhkəmləndirilir.</p>
+        </div>
+
+        <div class="edu-model-card">
+          <div class="edu-model-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h4>Həftəlik Monitorinq</h4>
+          <p>Hər həftə qiymətləndirmə aparılır və tələbənin inkişafı şəxsi Tələbə Web Hesabı üzərindən izlənilir.</p>
+        </div>
+
+        <div class="edu-model-card">
+          <div class="edu-model-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4>AI Dəstəkli Tədris</h4>
+          <p>Müasir süni intellekt alətlərindən kodlaşdırma, analiz və layihə quruculuğunda effektiv istifadə öyrədilir.</p>
+        </div>
+
+        <div class="edu-model-card">
+          <div class="edu-model-icon"><i class="fa-solid fa-award"></i></div>
+          <h4>Portfolio & Rəsmi Sertifikat</h4>
+          <p>Tədris yekununda tələbə real buraxılış layihəsi təhvil verir və Altensor Academy-nin rəsmi sertifikatını qazanır.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖDƏNİŞSİZ KONSULTASİYA & SINAQ DƏRSİ CTA -->
+  <section class="courses-cta-section">
+    <div class="study-fields-container">
+      <div class="courses-cta-box">
+        <div class="courses-cta-text">
+          <h3>Hansı ixtisası seçəcəyinizə əmin deyilsiniz?</h3>
+          <p>Mütəxəssislərimizlə ödənişsiz konsultasiya keçin və ya ilk ödənişsiz sınaq dərsində iştirak edərək özünüz qərar verin.</p>
+        </div>
+        <div class="courses-cta-actions">
+          <a href="register.html" class="btn-explore">Qeydiyyatdan Keç</a>
+          <a href="tel:+994104727578" class="btn-signup" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);">
+            <i class="fa-solid fa-phone" style="margin-right:8px;"></i> +994 10 472 75 78
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSE DETAIL & SYLLABUS MODAL -->
+  <div class="course-modal-overlay" id="courseDetailModal">
+    <div class="course-modal-box">
+      <div class="course-modal-banner">
+        <img id="modalCourseImg" src="" alt="Kurs şəkli">
+        <button type="button" class="course-modal-close" onclick="closeCourseDetailModal()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="course-modal-body">
+        <span class="course-modal-cat" id="modalCourseCategory">Kateqoriya</span>
+        <h3 class="course-modal-title" id="modalCourseTitle">Kurs Adı</h3>
+        <p class="course-modal-desc" id="modalCourseDesc"></p>
+
+        <div class="course-modal-meta-row">
+          <span><i class="fa-regular fa-calendar-check"></i> <span id="modalCourseDays"></span></span>
+          <span><i class="fa-solid fa-layer-group"></i> 100% Praktiki</span>
+          <span><i class="fa-solid fa-award"></i> Rəsmi Sertifikat</span>
+        </div>
+
+        <div class="course-syllabus-box">
+          <h4>Bu proqramda nələri öyrənəcəksiniz?</h4>
+          <ul class="course-syllabus-list" id="modalCourseModules"></ul>
+        </div>
+
+        <div class="course-modal-footer">
+          <span id="modalCourseStatusBadge" style="font-weight:700; font-size:14px;"></span>
+          <button type="button" id="modalApplyBtn" class="btn-explore" style="border:none; cursor:pointer;">
+            Kursa Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <img src="assets/images/logo.png" alt="Altensor Academy" class="main-logo-img">
+            <div class="brand-name">
+              Altensor<span>Academy</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Yüksək keyfiyyətli və praktiki tədrislə gələcəyin süni intellekt və proqramlaşdırma mütəxəssislərini yetişdiririk.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-circle" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/altensor.academy?vrfl=MWppcjVxbjloYjBxdg==" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Sürətli Keçidlər</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="courses.html">Tədris Proqramları</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="why-us.html">Üstünlüklərimiz</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Bizimlə Əlaqə</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <a href="mailto:info@altensoracademy.com">info@altensoracademy.com</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+994104727578">+994 10 472 75 78</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Baku, Azərbaycan</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">© 2026 Altensor Academy. Bütün hüquqlar qorunur.</p>
+        <div class="footer-bottom-links">
+          <a href="#">İstifadə Şərtləri</a>
+          <a href="#">Məxfilik Siyasəti</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

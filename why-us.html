@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Üstünlüklərimiz | Altensor Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" title="Altensor Academy">
+        <img src="assets/images/logo.png" alt="Altensor Academy Loqo" class="main-logo-img">
+        <div class="brand-name">
+          Altensor<span>Academy</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+        <li class="nav-item-dropdown">
+          <a href="courses.html" class="nav-link">
+            Tədris Proqramları
+          </a>
+          <div class="mega-menu-dropdown" id="megaMenuDropdown">
+            <div class="mega-sidebar" id="megaSidebar">
+              <a href="courses.html?cat=proqramlasdirma" class="mega-cat-item active" data-cat="proqramlasdirma">
+                <span class="mega-cat-title">Proqramlaşdırma & AI</span>
+                <span class="mega-cat-sub">AI funksiyalı tam veb tətbiqlər</span>
+              </a>
+              <a href="courses.html?cat=mobil" class="mega-cat-item" data-cat="mobil">
+                <span class="mega-cat-title">Mobil Proqramlaşdırma</span>
+                <span class="mega-cat-sub">Android/iOS tətbiq və C# server</span>
+              </a>
+              <a href="courses.html?cat=datascience" class="mega-cat-item" data-cat="datascience">
+                <span class="mega-cat-title">Süni İntellekt & Data</span>
+                <span class="mega-cat-sub">Python ilə data təhlili və ML modeli</span>
+              </a>
+              <a href="courses.html?cat=analitika" class="mega-cat-item" data-cat="analitika">
+                <span class="mega-cat-title">Data Analitika</span>
+                <span class="mega-cat-sub">SQL ilə data və Power BI dashboard</span>
+              </a>
+              <a href="courses.html?cat=kids" class="mega-cat-item" data-cat="kids">
+                <span class="mega-cat-title">Uşaqlar Üçün İT</span>
+                <span class="mega-cat-sub">Öz saytını, oyununu və viktorinanı yarat</span>
+              </a>
+              <a href="courses.html?cat=biznes" class="mega-cat-item" data-cat="biznes">
+                <span class="mega-cat-title">İT Biznes Analitika</span>
+                <span class="mega-cat-sub">Biznes tələbi və texniki tapşırıq</span>
+              </a>
+            </div>
+            <div class="mega-content">
+              <div class="mega-courses-grid" id="megaCoursesGrid"></div>
+              <div class="mega-footer">
+                <span>Bütün tədris sahələri 100% praktiki layihələr üzərində qurulub</span>
+                <a href="courses.html" class="mega-all-link">
+                  Bütün tədris sahələri <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        <li><a href="why-us.html" class="nav-link active">Üstünlüklərimiz</a></li>
+        <li><a href="teachers.html" class="nav-link">Müəllimlər</a></li>
+        <li><a href="contact.html" class="nav-link">Əlaqə</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-search" aria-label="Axtarış" title="Axtarış">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="login.html" class="link-login">Daxil Ol</a>
+        <a href="register.html" class="btn-signup">Qeydiyyat</a>
+        <button class="mobile-menu-btn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="courses-page-hero">
+    <div class="courses-hero-inner">
+      <div class="breadcrumb-trail">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Ana Səhifə</a>
+        <i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i>
+        <span>Üstünlüklərimiz</span>
+      </div>
+
+      <div class="courses-hero-top">
+        <div>
+          <h1 class="courses-hero-title">
+            Niyə Məhz <span>Altensor Academy?</span>
+          </h1>
+          <p class="courses-hero-sub">
+            Tədrisdə keyfiyyəti, fərdi yanaşmanı, süni intellekt texnologiyalarını və real praktiki nəticələri bir araya gətiririk.
+          </p>
+        </div>
+        <div>
+          <a href="courses.html" class="btn-explore">Tədris Proqramlarına Bax</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 ƏSAS ÜSTÜNLÜK (Genişləndirilmiş Kartlar) -->
+  <section class="why-us-section" style="padding: 80px 0;">
+    <div class="why-container">
+      <span class="section-tag">ÜSTÜNLÜKLƏRİMİZ</span>
+      <h2 class="section-heading">Bizi Fərqləndirən 6 Əsas Dəyər</h2>
+
+      <div class="features-grid">
+        <div class="feature-card card-accent-purple">
+          <div class="feature-icon-box icon-purple">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <h3 class="feature-title">Səmimi və Peşəkar Müəllimlər</h3>
+          <p class="feature-desc">
+            Sahəsində real təcrübəsi olan, tələbəyə dost və yolgöstərən mentorlar hər mövzunu sual-cavabla tam mənimsədir.
+          </p>
+        </div>
+
+        <div class="feature-card card-accent-blue">
+          <div class="feature-icon-box icon-blue">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h3 class="feature-title">Müasir Tədris Metodları</h3>
+          <p class="feature-desc">
+            Quru nəzəriyyə deyil, real layihələr və süni intellekt alətlərinin inteqrasiyasına əsaslanan 100% praktiki təhsil.
+          </p>
+        </div>
+
+        <div class="feature-card card-accent-green">
+          <div class="feature-icon-box icon-green">
+            <i class="fa-solid fa-couch"></i>
+          </div>
+          <h3 class="feature-title">Rahat Tədris Mühiti</h3>
+          <p class="feature-desc">
+            Azsaylı siniflər, rahat auditoriyalar və övladlarını gözləyən valideynlər üçün xüsusi Valideyn Gözləmə Zalı.
+          </p>
+        </div>
+
+        <div class="feature-card card-accent-amber">
+          <div class="feature-icon-box icon-amber">
+            <i class="fa-solid fa-chart-column"></i>
+          </div>
+          <h3 class="feature-title">Həftəlik Qiymətləndirmə</h3>
+          <p class="feature-desc">
+            Hər həftə keçirilən dərslər üzrə monitorinq aparılır və tələbənin inkişafı şəxsi Tələbə Web Hesabında izlənilir.
+          </p>
+        </div>
+
+        <div class="feature-card card-accent-indigo">
+          <div class="feature-icon-box icon-indigo">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <h3 class="feature-title">Asan Anlaşılan Materiallar</h3>
+          <p class="feature-desc">
+            Mürəkkəb texniki mövzular sadə, aydın, addım-addım praktiki nümunələr və vizual materiallarla izah edilir.
+          </p>
+        </div>
+
+        <div class="feature-card card-accent-rose">
+          <div class="feature-icon-box icon-rose">
+            <i class="fa-solid fa-fire"></i>
+          </div>
+          <h3 class="feature-title">Motivasiyaedici Mühit</h3>
+          <p class="feature-desc">
+            Şagirdlər prosesdən zövq aldıqda öyrənmək daha asan olur — yaradıcılığı və komanda ruhunu dəstəkləyən mühit yaradırıq.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÜQAYİSƏ BLOKU -->
+  <section class="about-light-section" style="padding: 76px 0;">
+    <div class="study-fields-container">
+      <span class="section-tag">FƏRQİMİZ</span>
+      <h2 class="study-fields-title" style="margin-bottom: 10px;">Standart Kurslar vs. Altensor Academy</h2>
+      <p style="color:#475569; max-width:680px; font-size:15.5px; line-height:1.6;">
+        Nəticəyə fokuslanan tədris modelimizin ənənəvi kurslardan fərqini bir baxışda görün:
+      </p>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h3><i class="fa-solid fa-circle-minus" style="color:#94A3B8;"></i> Standart Kurslar</h3>
+          <ul class="compare-list">
+            <li><i class="fa-solid fa-xmark"></i> <span>Əsasən slaydlar və quru nəzəri izahlar</span></li>
+            <li><i class="fa-solid fa-xmark"></i> <span>Kütləvi siniflər və fərdi diqqətin azlığı</span></li>
+            <li><i class="fa-solid fa-xmark"></i> <span>Həftəlik inkişaf monitorinqinin olmaması</span></li>
+            <li><i class="fa-solid fa-xmark"></i> <span>Süni intellekt alətləri olmadan köhnə proqramlar</span></li>
+            <li><i class="fa-solid fa-xmark"></i> <span>Ödənişsiz konsultasiya və sınaq dərsinin olmaması</span></li>
+          </ul>
+        </div>
+
+        <div class="compare-card compare-altensor">
+          <h3><i class="fa-solid fa-star" style="color:#38BDF8;"></i> Altensor Academy</h3>
+          <ul class="compare-list">
+            <li><i class="fa-solid fa-circle-check"></i> <span>100% praktika, real layihələr və buraxılış portfolioları</span></li>
+            <li><i class="fa-solid fa-circle-check"></i> <span>Azsaylı siniflər və hər tələbəyə fərdi mentor dəstəyi</span></li>
+            <li><i class="fa-solid fa-circle-check"></i> <span>Həftəlik qiymətləndirmə və şəxsi Tələbə Web Hesabı</span></li>
+            <li><i class="fa-solid fa-circle-check"></i> <span>AI inteqrasiyalı müasir tədris proqramları</span></li>
+            <li><i class="fa-solid fa-circle-check"></i> <span>Ödənişsiz konsultasiya, ilk sınaq dərsi və Valideyn Gözləmə Zalı</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEZ-TEZ VERİLƏN SUALLAR (FAQ) -->
+  <section class="about-white-section" style="padding: 80px 0;">
+    <div class="study-fields-container">
+      <div style="text-align:center;">
+        <span class="section-tag">SUAL-CAVAB</span>
+        <h2 class="study-fields-title" style="margin-bottom: 10px;">Tez-Tez Verilən Suallar</h2>
+        <p style="color:#475569; max-width:600px; margin:0 auto; font-size:15.5px;">
+          Tələbələrin və valideynlərin ən çox maraqlandığı suallara aydın cavablar
+        </p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button type="button" class="faq-question" onclick="toggleFaq(this)">
+            <span>Heç bir İT və ya proqramlaşdırma təcrübəm yoxdursa qoşula bilərəmmi?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Bəli! Bütün tədris proqramlarımız sıfırdan başlamaq istəyənlər üçün uyğunlaşdırılıb. Mövzular ən sadə əsaslardan başlayaraq mərhələli şəkildə öyrədilir.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question" onclick="toggleFaq(this)">
+            <span>İlk sınaq dərsi və konsultasiya həqiqətən ödənişsizdir?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Bəli, akademiyamızda ixtisas seçimindən əvvəl ödənişsiz konsultasiya keçirilir və ilk sınaq dərsində tam ödənişsiz iştirak edə bilərsiniz.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question" onclick="toggleFaq(this)">
+            <span>Dərslər həftənin hansı günləri tədris olunur?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Dərslər həftəiçi (Bazar ertəsi – Cümə) və həftəsonu (Şənbə) növbəli cədvəl əsasında tələbələrə uyğun qrafiklə keçirilir.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-question" onclick="toggleFaq(this)">
+            <span>Həftəlik monitorinq və Tələbə Web Hesabı necə işləyir?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Hər bir tələbə üçün şəxsi web hesab yaradılır. Dərs materialları, ev tapşırıqları və həftəlik qiymətləndirmə nəticələri həmin hesabda əks olunur.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="courses-cta-section" style="padding-top: 64px;">
+    <div class="study-fields-container">
+      <div class="courses-cta-box">
+        <div class="courses-cta-text">
+          <h3>İlk ödənişsiz sınaq dərsində iştirak edin!</h3>
+          <p>Qeydiyyatdan keçin və seçdiyiniz kursa müraciət göndərin — mütəxəssislərimiz sizinlə əlaqə saxlasın.</p>
+        </div>
+        <div class="courses-cta-actions">
+          <a href="register.html" class="btn-explore">Qeydiyyatdan Keç</a>
+          <a href="courses.html" class="btn-signup" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);">
+            Kurslara Bax
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <img src="assets/images/logo.png" alt="Altensor Academy" class="main-logo-img">
+            <div class="brand-name">
+              Altensor<span>Academy</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Yüksək keyfiyyətli və praktiki tədrislə gələcəyin süni intellekt və proqramlaşdırma mütəxəssislərini yetişdiririk.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-circle" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/altensor.academy?vrfl=MWppcjVxbjloYjBxdg==" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Sürətli Keçidlər</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="courses.html">Tədris Proqramları</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="why-us.html">Üstünlüklərimiz</a></li>
+            <li><a href="teachers.html">Müəllimlər</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Bizimlə Əlaqə</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <a href="mailto:info@altensoracademy.com">info@altensoracademy.com</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+994104727578">+994 10 472 75 78</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Baku, Azərbaycan</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">© 2026 Altensor Academy. Bütün hüquqlar qorunur.</p>
+        <div class="footer-bottom-links">
+          <a href="#">İstifadə Şərtləri</a>
+          <a href="#">Məxfilik Siyasəti</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.closest(".faq-item");
+      const isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("open"));
+      if (!isOpen) item.classList.add("open");
+    }
+
+    // 3D Tilt & Spotlight effect on feature cards
+    document.querySelectorAll('.feature-card').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        const rotateX = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * -3.5;
+        const rotateY = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * 3.5;
+        card.style.transform = `translateY(-7px) perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  </script>
+</body>
+</html>
