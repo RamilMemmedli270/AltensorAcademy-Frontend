@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-poçt Təsdiqi | Altensor Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #090E25;
+            --card-bg: #111936;
+            --primary: #5D5FEF;
+            --primary-hover: #4B4DDB;
+            --accent: #38BDF8;
+            --text-white: #FFFFFF;
+            --text-muted: #94A3B8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --danger: #EF4444;
+            --success: #10B981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(93, 95, 239, 0.2), transparent 45%),
+                        radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.15), transparent 45%),
+                        var(--bg-dark);
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 460px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 40px 36px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-white);
+            margin-bottom: 24px;
+        }
+
+        .auth-logo img {
+            height: 54px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .auth-logo span {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .auth-logo span strong {
+            color: var(--accent);
+        }
+
+        .verify-badge {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 16px;
+            border-radius: 18px;
+            background: rgba(93, 95, 239, 0.16);
+            border: 1px solid rgba(93, 95, 239, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .auth-header h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .auth-header p {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            line-height: 1.55;
+        }
+
+        .auth-header .email-highlight {
+            color: var(--accent);
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .alert-box {
+            display: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            color: #FCA5A5;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #6EE7B7;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #CBD5E1;
+            margin-bottom: 8px;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px 16px 13px 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-white);
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .input-group input.code-input {
+            text-align: center;
+            padding-left: 16px;
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: 0.45em;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(93, 95, 239, 0.25);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #4338CA);
+            color: white;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(93, 95, 239, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-resend {
+            width: 100%;
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: #E2E8F0;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-resend:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .btn-resend:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <a href="index.html" class="auth-logo">
+            <img src="assets/logo.png" alt="Altensor Academy Logo">
+            <span>Altensor <strong>Academy</strong></span>
+        </a>
+
+        <div class="verify-badge">
+            <i class="fa-solid fa-envelope-circle-check"></i>
+        </div>
+
+        <div class="auth-header">
+            <h1>E-poçt Təsdiqi</h1>
+            <p id="verifySubtitle">
+                Hesabınızı aktivləşdirmək üçün e-poçt ünvanınıza göndərilən 6 rəqəmli təsdiq kodunu daxil edin.
+            </p>
+        </div>
+
+        <div id="alertBox" class="alert-box"></div>
+
+        <form id="verifyForm">
+            <div class="form-group" id="emailGroup">
+                <label for="email">E-poçt ünvanı</label>
+                <div class="input-group">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="email" placeholder="example@mail.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="code">6 Rəqəmli Təsdiq Kodu</label>
+                <div class="input-group">
+                    <input type="text" id="code" class="code-input" maxlength="6" inputmode="numeric" pattern="[0-9]{6}" placeholder="••••••" required autofocus>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="verifyBtn">
+                <span>Təsdiqlə və Daxil Ol</span>
+                <i class="fa-solid fa-check"></i>
+            </button>
+
+            <button type="button" class="btn-resend" id="resendBtn">
+                Kodu Yenidən Göndər
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            <a href="login.html"><i class="fa-solid fa-arrow-left"></i> Giriş səhifəsinə qayıt</a>
+        </div>
+    </div>
+
+    <script src="js/config.js?v=2"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const initialEmail = (params.get("email") || sessionStorage.getItem("pendingVerifyEmail") || "").trim();
+
+        const emailInput = document.getElementById("email");
+        const codeInput = document.getElementById("code");
+        const verifySubtitle = document.getElementById("verifySubtitle");
+        const alertBox = document.getElementById("alertBox");
+        const verifyForm = document.getElementById("verifyForm");
+        const verifyBtn = document.getElementById("verifyBtn");
+        const resendBtn = document.getElementById("resendBtn");
+
+        if (initialEmail) {
+            emailInput.value = initialEmail;
+            verifySubtitle.innerHTML = `<span class="email-highlight"></span> ünvanına göndərilən 6 rəqəmli təsdiq kodunu daxil edin.`;
+            verifySubtitle.querySelector(".email-highlight").textContent = initialEmail;
+        }
+
+        function showAlert(message, isSuccess = false) {
+            alertBox.textContent = message;
+            alertBox.className = "alert-box " + (isSuccess ? "alert-success" : "alert-error");
+            alertBox.style.display = "block";
+        }
+
+        codeInput.addEventListener("input", () => {
+            codeInput.value = codeInput.value.replace(/\D/g, "").slice(0, 6);
+        });
+
+        verifyForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            alertBox.style.display = "none";
+
+            const email = emailInput.value.trim();
+            const code = codeInput.value.trim();
+
+            if (!email || code.length !== 6) {
+                showAlert("Zəhmət olmasa e-poçtu və 6 rəqəmli kodu daxil edin.");
+                return;
+            }
+
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Yoxlanılır...';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/verify-email`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, code })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || !data.succeeded) {
+                    showAlert(data.message || "Təsdiq kodu yanlışdır və ya müddəti bitib.");
+                    verifyBtn.disabled = false;
+                    verifyBtn.innerHTML = '<span>Təsdiqlə və Daxil Ol</span><i class="fa-solid fa-check"></i>';
+                    return;
+                }
+
+                sessionStorage.removeItem("pendingVerifyEmail");
+                saveAuthData(data);
+                showAlert(data.message || "E-poçt təsdiqləndi! Yönləndirilirsiniz...", true);
+
+                setTimeout(() => {
+                    window.location.href = data.role === "Admin" ? "admin.html" : "index.html";
+                }, 800);
+            } catch (error) {
+                showAlert("Serverlə əlaqə yaratmaq mümkün olmadı.");
+                verifyBtn.disabled = false;
+                verifyBtn.innerHTML = '<span>Təsdiqlə və Daxil Ol</span><i class="fa-solid fa-check"></i>';
+            }
+        });
+
+        let resendCooldown = 0;
+        let cooldownTimer = null;
+
+        function startCooldown(seconds) {
+            resendCooldown = seconds;
+            resendBtn.disabled = true;
+            resendBtn.textContent = `Yenidən göndər (${resendCooldown}s)`;
+            clearInterval(cooldownTimer);
+            cooldownTimer = setInterval(() => {
+                resendCooldown -= 1;
+                if (resendCooldown <= 0) {
+                    clearInterval(cooldownTimer);
+                    resendBtn.disabled = false;
+                    resendBtn.textContent = "Kodu Yenidən Göndər";
+                } else {
+                    resendBtn.textContent = `Yenidən göndər (${resendCooldown}s)`;
+                }
+            }, 1000);
+        }
+
+        resendBtn.addEventListener("click", async () => {
+            alertBox.style.display = "none";
+            const email = emailInput.value.trim();
+            if (!email) {
+                showAlert("Zəhmət olmasa e-poçt ünvanınızı daxil edin.");
+                return;
+            }
+
+            resendBtn.disabled = true;
+            resendBtn.textContent = "Göndərilir...";
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/resend-verification`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                if (!response.ok || !data.succeeded) {
+                    showAlert(data.message || "Kod göndərilə bilmədi.");
+                    resendBtn.disabled = false;
+                    resendBtn.textContent = "Kodu Yenidən Göndər";
+                    return;
+                }
+
+                showAlert(data.message || "Yeni təsdiq kodu e-poçtunuza göndərildi.", true);
+                startCooldown(30);
+            } catch (error) {
+                showAlert("Serverlə əlaqə yaratmaq mümkün olmadı.");
+                resendBtn.disabled = false;
+                resendBtn.textContent = "Kodu Yenidən Göndər";
+            }
+        });
+    </script>
+</body>
+</html>

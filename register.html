@@ -404,6 +404,16 @@
                     return;
                 }
 
+                const targetEmail = data.email || email;
+                if (data.requiresEmailVerification || !data.token) {
+                    sessionStorage.setItem("pendingVerifyEmail", targetEmail);
+                    showAlert(data.message || "Qeydiyyat tamamlandı! E-poçt təsdiq səhifəsinə yönləndirilirsiniz...", true);
+                    setTimeout(() => {
+                        window.location.href = `verify-email.html?email=${encodeURIComponent(targetEmail)}`;
+                    }, 900);
+                    return;
+                }
+
                 saveAuthData(data);
                 showAlert("Qeydiyyat uğurla tamamlandı! Ana səhifəyə yönləndirilirsiniz...", true);
 

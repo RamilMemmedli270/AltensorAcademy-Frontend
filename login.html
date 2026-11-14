@@ -478,6 +478,15 @@
                 const data = await response.json();
 
                 if (!response.ok || !data.succeeded) {
+                    if (data.requiresEmailVerification) {
+                        const targetEmail = data.email || email;
+                        sessionStorage.setItem("pendingVerifyEmail", targetEmail);
+                        showAlert(data.message || "E-poçt ünvanınız təsdiqlənməyib. Təsdiq səhifəsinə yönləndirilirsiniz...", false);
+                        setTimeout(() => {
+                            window.location.href = `verify-email.html?email=${encodeURIComponent(targetEmail)}`;
+                        }, 1100);
+                        return;
+                    }
                     showAlert(data.message || "E-poçt və ya şifrə yanlışdır.");
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span>Daxil Ol</span><i class="fa-solid fa-arrow-right"></i>';
