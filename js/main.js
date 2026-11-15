@@ -614,16 +614,23 @@ const FALLBACK_TEACHERS = [
     {
         id: 1,
         fullName: "Əli Cabbarov",
-        specialty: "Full-stack Proqramlaşdırma (AI ilə)",
-        bio: "Müasir veb arxitekturaları, Backend/Frontend sistemlərinin qurulması və süni intellekt alətlərinin tətbiqi üzrə praktiki tədris və mentorluq.",
+        specialty: "Data Science",
+        bio: "Böyük həcmli məlumatların emalı, maşın öyrənməsi (Machine Learning) modellərinin qurulması və süni intellekt əsaslı proqnozlaşdırma həlləri üzrə təlimçi.",
         imagePath: "assets/images/teachers/ali-cabbarov.jpg"
     },
     {
         id: 2,
         fullName: "Ramil Məmmədli",
-        specialty: "Full-stack Proqramlaşdırma (AI ilə)",
-        bio: "ASP.NET Core, N-Tier arxitektura, SQL Server və AI əsaslı tam funksional veb tətbiqlərin sıfırdan hazırlanması üzrə təlimçi.",
+        specialty: "Web for Kids",
+        bio: "Məktəblilər üçün alqoritmik düşüncənin inkişafı, veb texnologiyaların əsasları və öz ilk interaktiv veb layihələrini sıfırdan hazırlamaq üzrə təlimçi.",
         imagePath: "assets/images/teachers/ramil-memmedli.jpg"
+    },
+    {
+        id: 3,
+        fullName: "Hüseyn Həsənli",
+        specialty: "Full-stack Proqramlaşdırma (AI ilə)",
+        bio: "IT sahəsində 10+ illik təcrübəyə malik Full-stack proqramçı (7 il C#/.NET Core API, 3 il Java/Spring Boot). MSSQL, Oracle və PostgreSQL verilənlər bazaları üzrə real layihə təcrübəsini tələbələrə praktiki şəkildə öyrədir.",
+        imagePath: "assets/images/teachers/huseyn-hesenli.jpg"
     }
 ];
 
