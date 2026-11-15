@@ -614,8 +614,8 @@ const FALLBACK_TEACHERS = [
     {
         id: 1,
         fullName: "Əli Cabbarov",
-        specialty: "Data Science",
-        bio: "Böyük həcmli məlumatların emalı, maşın öyrənməsi (Machine Learning) modellərinin qurulması və süni intellekt əsaslı proqnozlaşdırma həlləri üzrə təlimçi.",
+        specialty: "Data Analitika",
+        bio: "Məlumatların toplanması, təmizlənməsi, vizuallaşdırılması və biznes qərarlarının qəbulu üçün analitik hesabatların hazırlanması üzrə təlimçi.",
         imagePath: "assets/images/teachers/ali-cabbarov.jpg"
     },
     {
