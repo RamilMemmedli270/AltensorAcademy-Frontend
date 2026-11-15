@@ -583,6 +583,12 @@
                 </button>
             </li>
             <li>
+                <button class="nav-btn" onclick="switchTab('specialties', this)">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>İxtisas Sahələri</span>
+                </button>
+            </li>
+            <li>
                 <button class="nav-btn" onclick="switchTab('users', this)">
                     <i class="fa-solid fa-users"></i>
                     <span>İstifadəçilər</span>
@@ -758,6 +764,38 @@
             </div>
         </section>
 
+        <!-- 3.5 TAB: İxtisas Sahələri (Parametrik) -->
+        <section id="tab-specialties" class="tab-panel">
+            <div class="panel-card">
+                <div class="panel-header">
+                    <h3>İxtisas Sahələri</h3>
+                </div>
+
+                <form id="specialtyForm" style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;">
+                    <input type="text" id="newSpecialtyName" class="form-control" style="flex:1; min-width:240px;" placeholder="Yeni ixtisas sahəsi (Məs: Data Science)" required>
+                    <button type="submit" class="btn-primary">
+                        <i class="fa-solid fa-plus"></i> Əlavə Et
+                    </button>
+                </form>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>İxtisas Sahəsi</th>
+                                <th>Əlavə Edilib</th>
+                                <th>Əməliyyat</th>
+                            </tr>
+                        </thead>
+                        <tbody id="specialtiesTableBody">
+                            <tr><td colspan="4">Yüklənir...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
         <!-- 4. TAB: Qeydiyyatdan Keçən İstifadəçilər -->
         <section id="tab-users" class="tab-panel">
             <div class="panel-card">
@@ -851,7 +889,9 @@
                 </div>
                 <div class="form-group">
                     <label>İxtisas Sahəsi</label>
-                    <input type="text" id="teacherSpecialty" class="form-control" placeholder="Məs: Senior AI & Full-Stack Instructor" required>
+                    <select id="teacherSpecialty" class="form-control" required>
+                        <option value="">İxtisas sahəsi seçin...</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Haqqında Qısa Məlumat</label>
@@ -1178,8 +1218,9 @@
             }
         }
 
-        function openTeacherModal() {
+        async function openTeacherModal() {
             document.getElementById("teacherForm").reset();
+            await loadSpecialties();
             document.getElementById("teacherModal").classList.add("open");
         }
 
@@ -1268,11 +1309,86 @@
             loadDashboardStats();
         }
 
+        // 4.5 Load & Manage Specialties (Parametric)
+        async function loadSpecialties() {
+            const tbody = document.getElementById("specialtiesTableBody");
+            const select = document.getElementById("teacherSpecialty");
+            try {
+                const res = await fetch(`${API_BASE_URL}/admin/specialties`, { headers: authHeaders() });
+                const list = await res.json();
+
+                if (select) {
+                    const currentVal = select.value;
+                    select.innerHTML = `<option value="">İxtisas sahəsi seçin...</option>` +
+                        list.map(s => `<option value="${escapeHtml(s.name)}">${escapeHtml(s.name)}</option>`).join("");
+                    if (currentVal && list.some(s => s.name === currentVal)) {
+                        select.value = currentVal;
+                    }
+                }
+
+                if (!tbody) return;
+                if (!list.length) {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#94A3B8;">Hələ ixtisas sahəsi əlavə edilməyib.</td></tr>`;
+                    return;
+                }
+
+                tbody.innerHTML = list.map((s, idx) => `
+                    <tr>
+                        <td>${idx + 1}</td>
+                        <td><strong>${escapeHtml(s.name)}</strong></td>
+                        <td>${formatDate(s.createdAt)}</td>
+                        <td>
+                            <button class="btn-sm btn-danger" onclick="deleteSpecialty(${Number(s.id)})">
+                                <i class="fa-solid fa-trash"></i> Sil
+                            </button>
+                        </td>
+                    </tr>
+                `).join("");
+            } catch (e) {
+                if (tbody) tbody.innerHTML = `<tr><td colspan="4">İxtisas sahələri yüklənərkən xəta baş verdi.</td></tr>`;
+            }
+        }
+
+        document.getElementById("specialtyForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const input = document.getElementById("newSpecialtyName");
+            const name = input.value.trim();
+            if (!name) return;
+
+            const res = await fetch(`${API_BASE_URL}/admin/specialties`, {
+                method: "POST",
+                headers: {
+                    ...authHeaders(),
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name })
+            });
+
+            const data = await res.json();
+            showToast(data.message || "Əməliyyat tamamlandı");
+            if (res.ok && data.succeeded) {
+                input.value = "";
+                loadSpecialties();
+            }
+        });
+
+        async function deleteSpecialty(id) {
+            if (!confirm("Bu ixtisas sahəsini silmək istədiyinizə əminsiniz?")) return;
+            const res = await fetch(`${API_BASE_URL}/admin/specialties/${id}`, {
+                method: "DELETE",
+                headers: authHeaders()
+            });
+            const data = await res.json();
+            showToast(data.message || "İxtisas sahəsi silindi");
+            loadSpecialties();
+        }
+
         // Initial Load
         loadDashboardStats();
         loadApplications();
         loadCourses();
         loadTeachers();
+        loadSpecialties();
         loadUsers();
     </script>
 </body>
