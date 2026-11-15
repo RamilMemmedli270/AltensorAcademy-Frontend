@@ -637,7 +637,8 @@ const FALLBACK_TEACHERS = [
 let teachersPageData = [];
 
 function getTeacherFilterKey(teacher) {
-    const text = `${teacher.specialty} ${teacher.bio || ""}`.toLowerCase();
+    const spec = (teacher.specialty || "").toLowerCase();
+    const text = spec || (teacher.bio || "").toLowerCase();
     if (text.includes("kids") || text.includes("uşaq")) return "kids";
     if (text.includes("biznes")) return "biznes";
     if (text.includes("mobil") || text.includes("ios") || text.includes("android")) return "mobil";
