@@ -551,6 +551,15 @@ function getCourseExtraMeta(course) {
             technologies: ["Python", "SQL", "PostgreSQL", "NumPy", "pandas", "scikit-learn", "XGBoost", "FastAPI"],
             finalProject: "Proqnoz modeli və onun API-si"
         },
+        analitika: {
+            age: "16+",
+            groupSize: "15-20 nəfər",
+            duration: "5 ay (20 həftə)",
+            intensity: "2 × 3 saat",
+            prerequisite: "Kompüterdən sərbəst istifadə",
+            technologies: ["Excel", "SQL Server / PostgreSQL", "Power Query", "Power BI", "DAX"],
+            finalProject: "İdarə heyəti üçün Power BI dashboard"
+        },
         kids: {
             age: "10-14 yaş",
             groupSize: "15-20 nəfər",
