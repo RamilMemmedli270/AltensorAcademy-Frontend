@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initMegaMenu();
     loadDynamicCourses();
     initCoursesPage();
+    initCourseDetailPage();
     initTeachersPage();
 });
 
@@ -446,7 +447,7 @@ async function initCoursesPage() {
 
     const courseIdParam = urlParams.get("courseId");
     if (courseIdParam) {
-        openCourseDetailModal(Number(courseIdParam));
+        window.location.href = `course-detail.html?id=${encodeURIComponent(courseIdParam)}`;
     }
 }
 
@@ -487,7 +488,7 @@ function renderStudyFields(filterKey, searchTerm) {
         const isOpen = course.status === 0;
 
         return `
-            <div class="field-card ${themeClass}" onclick="openCourseDetailModal(${Number(course.id)})">
+            <div class="field-card ${themeClass}" onclick="window.location.href='course-detail.html?id=${Number(course.id)}'">
                 <svg class="field-geo-lines" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M-20 260 L90 260 L120 200 L280 200 L310 150 L430 150" stroke="white" stroke-width="24" stroke-linejoin="miter"/>
                     <path d="M20 330 L140 330 L175 270 L340 270" stroke="white" stroke-width="10" stroke-linejoin="miter"/>
@@ -520,61 +521,191 @@ function renderStudyFields(filterKey, searchTerm) {
     }).join("");
 }
 
-function openCourseDetailModal(courseId) {
-    const course = coursesPageData.find(c => c.id === courseId);
+function getCourseExtraMeta(course) {
+    const key = getCourseFilterKey(course);
+    const catalog = {
+        kids: {
+            age: "10-14 yaş",
+            groupSize: "15-20 nəfər",
+            duration: "4 ay (16 həftə)",
+            intensity: "2 × 1.5 saat",
+            prerequisite: "Yoxdur",
+            technologies: ["HTML", "CSS", "JavaScript", "VS Code / CodePen"],
+            finalProject: "İnternetdə yayımlanmış şəxsi sayt + JS oyunu"
+        },
+        biznes: {
+            age: "18+",
+            groupSize: "15-20 nəfər",
+            duration: "4 ay (16 həftə)",
+            intensity: "2 × 3 saat",
+            prerequisite: "Yoxdur",
+            technologies: ["UML", "BPMN", "Jira", "Confluence", "Figma", "Postman", "SQL"],
+            finalProject: "Texniki tapşırıq (TT/SRS) + UML/BPMN paketi"
+        },
+        proqramlasdirma: {
+            age: "18+",
+            groupSize: "15-20 nəfər",
+            duration: "Praktiki proqram",
+            intensity: "Həftədə 2-3 dəfə",
+            prerequisite: "Yoxdur",
+            technologies: ["HTML5", "CSS3", "JavaScript", "C# / .NET", "SQL Server", "AI Alətləri"],
+            finalProject: "Real canlı Full-stack veb layihə"
+        },
+        mobil: {
+            age: "18+",
+            groupSize: "15-20 nəfər",
+            duration: "Praktiki proqram",
+            intensity: "Həftədə 2-3 dəfə",
+            prerequisite: "Yoxdur",
+            technologies: ["iOS & Android", "REST API", "C# Backend", "Verilənlər Bazası"],
+            finalProject: "Mağaza üçün hazır mobil tətbiq"
+        },
+        datascience: {
+            age: "18+",
+            groupSize: "15-20 nəfər",
+            duration: "Praktiki proqram",
+            intensity: "Həftədə 2-3 dəfə",
+            prerequisite: "Yoxdur",
+            technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Machine Learning"],
+            finalProject: "Real data üzərində ML proqnozlaşdırma modeli"
+        },
+        analitika: {
+            age: "18+",
+            groupSize: "15-20 nəfər",
+            duration: "Praktiki proqram",
+            intensity: "Həftədə 2-3 dəfə",
+            prerequisite: "Yoxdur",
+            technologies: ["SQL", "Power BI", "DAX", "Excel", "Data Modelləşdirmə"],
+            finalProject: "İnteraktiv biznes analitika dashboard-u"
+        }
+    };
+    return catalog[key] || catalog.proqramlasdirma;
+}
+
+async function initCourseDetailPage() {
+    const page = document.getElementById("courseDetailPage");
+    if (!page) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const idParam = Number(params.get("id") || params.get("courseId"));
+
+    let course = null;
+    try {
+        if (idParam) {
+            const res = await fetch(`${API_BASE_URL}/courses/${idParam}`);
+            if (res.ok) course = await res.json();
+        }
+        if (!course) {
+            const allRes = await fetch(`${API_BASE_URL}/courses`);
+            if (allRes.ok) {
+                const list = await allRes.json();
+                course = list.find(c => c.id === idParam) || list[0] || null;
+            }
+        }
+    } catch {
+        // fallback below
+    }
+
+    if (!course) {
+        course = FALLBACK_COURSES.find(c => c.id === idParam) || FALLBACK_COURSES[0];
+    }
+
     if (!course) return;
 
-    const modal = document.getElementById("courseDetailModal");
-    if (!modal) return;
+    document.title = `${course.name} | Altensor Academy`;
+    document.getElementById("cdCategory").textContent = course.category;
+    document.getElementById("cdTitle").textContent = course.name;
+    document.getElementById("cdDescription").textContent = course.description;
+
+    const isOpen = course.status === 0;
+    const statusPill = document.getElementById("cdStatusPill");
+    statusPill.className = `cd-status-pill ${isOpen ? "open" : "full"}`;
+    statusPill.innerHTML = isOpen
+        ? `<i class="fa-solid fa-circle-dot"></i> Qeydiyyat Açıqdır`
+        : `<i class="fa-solid fa-circle-xmark"></i> Qrup Dolub`;
 
     const imgUrl = resolveImageUrl(course.imagePath, "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=700&q=80");
-    const isOpen = course.status === 0;
+    const cdImg = document.getElementById("cdImage");
+    cdImg.src = imgUrl;
+    cdImg.alt = course.name;
 
-    document.getElementById("modalCourseImg").src = imgUrl;
-    document.getElementById("modalCourseCategory").textContent = course.category;
-    document.getElementById("modalCourseTitle").textContent = course.name;
-    document.getElementById("modalCourseDesc").textContent = course.description;
-    document.getElementById("modalCourseDays").textContent = course.lessonDays;
+    const meta = getCourseExtraMeta(course);
+    const specs = [
+        { icon: "fa-solid fa-user-group", label: "Yaş həddi", val: meta.age },
+        { icon: "fa-solid fa-users", label: "Qrup ölçüsü", val: meta.groupSize },
+        { icon: "fa-regular fa-clock", label: "Müddət", val: meta.duration },
+        { icon: "fa-regular fa-calendar-check", label: "Dərslər", val: meta.intensity },
+        { icon: "fa-solid fa-shield-check", label: "Ön tələb", val: meta.prerequisite },
+        { icon: "fa-solid fa-rocket", label: "Yekun layihə", val: meta.finalProject }
+    ];
+
+    document.getElementById("cdSpecsGrid").innerHTML = specs.map(s => `
+        <div class="cd-spec-item">
+            <div class="cd-spec-label"><i class="${s.icon}"></i> ${s.label}</div>
+            <div class="cd-spec-val">${escapeHtml(s.val)}</div>
+        </div>
+    `).join("");
+
+    if (meta.technologies && meta.technologies.length) {
+        document.getElementById("cdTechCard").style.display = "block";
+        document.getElementById("cdTechList").innerHTML = meta.technologies
+            .map(t => `<span class="cd-tech-badge">${escapeHtml(t)}</span>`)
+            .join("");
+    }
 
     const modules = getCourseModules(course);
-    document.getElementById("modalCourseModules").innerHTML = modules
-        .map(m => `<li><i class="fa-solid fa-circle-check"></i> <span>${escapeHtml(m)}</span></li>`)
-        .join("");
+    document.getElementById("cdModulesList").innerHTML = modules.map((m, idx) => `
+        <li>
+            <span class="cd-module-num">${idx + 1}</span>
+            <span>${escapeHtml(m)}</span>
+        </li>
+    `).join("");
 
-    const statusBadge = document.getElementById("modalCourseStatusBadge");
-    statusBadge.innerHTML = isOpen
-        ? `<span style="color:#059669;"><i class="fa-solid fa-circle-dot"></i> Qeydiyyat Açıqdır</span>`
-        : `<span style="color:#DC2626;"><i class="fa-solid fa-circle-xmark"></i> Qrup Dolub</span>`;
+    document.getElementById("cdSidebarMeta").innerHTML = `
+        <li><span>Dərs günləri</span><strong>${escapeHtml(course.lessonDays || "-")}</strong></li>
+        <li><span>Müddət</span><strong>${escapeHtml(meta.duration)}</strong></li>
+        <li><span>Tədris formatı</span><strong>100% Praktiki</strong></li>
+        <li><span>Sertifikat</span><strong>Rəsmi Sertifikat</strong></li>
+    `;
 
-    const applyBtn = document.getElementById("modalApplyBtn");
+    const applyBtn = document.getElementById("cdApplyBtn");
     if (isOpen) {
         applyBtn.disabled = false;
-        applyBtn.style.opacity = "1";
-        applyBtn.style.cursor = "pointer";
         applyBtn.innerHTML = 'Kursa Müraciət Et <i class="fa-solid fa-arrow-right"></i>';
         applyBtn.onclick = () => applyToCourse(course.id);
     } else {
         applyBtn.disabled = true;
-        applyBtn.style.opacity = "0.5";
-        applyBtn.style.cursor = "not-allowed";
         applyBtn.innerHTML = 'Qrup Dolub';
     }
 
-    modal.classList.add("open");
-}
-
-function closeCourseDetailModal() {
-    const modal = document.getElementById("courseDetailModal");
-    if (modal) modal.classList.remove("open");
-}
-
-// Close modal when clicking outside
-document.addEventListener("click", (e) => {
-    const modal = document.getElementById("courseDetailModal");
-    if (modal && e.target === modal) {
-        closeCourseDetailModal();
+    // Matching Teacher
+    let teachers = [];
+    try {
+        const tRes = await fetch(`${API_BASE_URL}/teachers`);
+        if (tRes.ok) {
+            const list = await tRes.json();
+            if (Array.isArray(list) && list.length) teachers = list;
+        }
+    } catch {
+        // fallback below
     }
-});
+    if (!teachers.length) teachers = FALLBACK_TEACHERS;
+
+    const courseKey = getCourseFilterKey(course);
+    const matchedTeacher = teachers.find(t => getTeacherFilterKey(t) === courseKey);
+    if (matchedTeacher) {
+        const tImg = resolveImageUrl(matchedTeacher.imagePath, "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80");
+        document.getElementById("cdTeacherCard").style.display = "block";
+        document.getElementById("cdTeacherBox").innerHTML = `
+            <img class="cd-teacher-img" src="${tImg}" alt="${escapeHtml(matchedTeacher.fullName)}">
+            <div class="cd-teacher-info">
+                <h4>${escapeHtml(matchedTeacher.fullName)}</h4>
+                <span class="cd-teacher-spec">${escapeHtml(matchedTeacher.specialty)}</span>
+                <p class="cd-teacher-bio">${escapeHtml(matchedTeacher.bio || "")}</p>
+            </div>
+        `;
+    }
+}
 
 // 4. Apply to Course Action
 async function applyToCourse(courseId) {
@@ -603,7 +734,6 @@ async function applyToCourse(courseId) {
         }
 
         showPageToast(data.message || "Müraciətiniz uğurla qeydə alındı!");
-        closeCourseDetailModal();
     } catch {
         showPageToast("Serverlə əlaqə yaratmaq mümkün olmadı.", true);
     }
@@ -816,11 +946,7 @@ function initGlobalSearch() {
             item.addEventListener("click", () => {
                 const id = Number(item.getAttribute("data-course-id"));
                 closeSearchModal();
-                if (typeof openCourseDetailModal === "function" && document.getElementById("courseDetailModal")) {
-                    openCourseDetailModal(id);
-                } else {
-                    window.location.href = `courses.html?courseId=${encodeURIComponent(id)}`;
-                }
+                window.location.href = `course-detail.html?id=${encodeURIComponent(id)}`;
             });
         });
     }

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurs Detalları | Altensor Academy</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
+  <style>
+    .cd-hero {
+      background: linear-gradient(135deg, #090E25 0%, #111936 65%, #1A2352 100%);
+      color: #FFFFFF;
+      padding: 46px 24px 64px;
+    }
+
+    .cd-container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .cd-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 22px;
+      transition: color 0.2s;
+    }
+
+    .cd-back-link:hover {
+      color: #38BDF8;
+    }
+
+    .cd-hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .cd-cat-pill {
+      background: rgba(93, 95, 239, 0.25);
+      border: 1px solid rgba(129, 140, 248, 0.45);
+      color: #C7D2FE;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .cd-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .cd-status-pill.open {
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6EE7B7;
+    }
+
+    .cd-status-pill.full {
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #FCA5A5;
+    }
+
+    .cd-hero-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .cd-hero-desc {
+      max-width: 760px;
+      color: #CBD5E1;
+      font-size: 16.5px;
+      line-height: 1.68;
+    }
+
+    .cd-main {
+      background: #F8FAFC;
+      padding: 42px 24px 72px;
+    }
+
+    .cd-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.95fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .cd-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .cd-card-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cd-card-title i {
+      color: #5D5FEF;
+    }
+
+    .cd-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+      gap: 14px;
+    }
+
+    .cd-spec-item {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 15px 16px;
+    }
+
+    .cd-spec-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cd-spec-label i {
+      color: #5D5FEF;
+    }
+
+    .cd-spec-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0F172A;
+      line-height: 1.4;
+    }
+
+    .cd-tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cd-tech-badge {
+      background: #EEF2FF;
+      color: #4338CA;
+      border: 1px solid #C7D2FE;
+      padding: 8px 15px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+    }
+
+    .cd-modules-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .cd-modules-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 12px;
+      color: #1E293B;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .cd-module-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: #5D5FEF;
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cd-teacher-box {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .cd-teacher-img {
+      width: 84px;
+      height: 84px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 2px solid #E2E8F0;
+      flex-shrink: 0;
+    }
+
+    .cd-teacher-info h4 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 4px;
+    }
+
+    .cd-teacher-spec {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #5D5FEF;
+      margin-bottom: 6px;
+    }
+
+    .cd-teacher-bio {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .cd-sidebar-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      position: sticky;
+      top: 96px;
+    }
+
+    .cd-sidebar-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .cd-sidebar-body {
+      padding: 24px;
+    }
+
+    .cd-sidebar-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .cd-sidebar-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 14px;
+      color: #475569;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #F1F5F9;
+    }
+
+    .cd-sidebar-list li strong {
+      color: #0F172A;
+      text-align: right;
+    }
+
+    .cd-apply-btn {
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #5D5FEF, #4338CA);
+      color: #FFFFFF;
+      font-size: 15.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cd-apply-btn:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(93, 95, 239, 0.35);
+    }
+
+    .cd-apply-btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .cd-contact-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
+      color: #0F172A;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .cd-contact-btn:hover {
+      background: #F1F5F9;
+    }
+
+    @media (max-width: 920px) {
+      .cd-grid {
+        grid-template-columns: 1fr;
+      }
+      .cd-sidebar-card {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" title="Altensor Academy">
+        <img src="assets/images/logo.png" alt="Altensor Academy Loqo" class="main-logo-img">
+        <div class="brand-name">
+          Altensor<span>Academy</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Ana Səhifə</a></li>
+        <li class="nav-item-dropdown">
+          <a href="courses.html" class="nav-link active">Tədris Proqramları</a>
+          <div class="mega-menu-dropdown" id="megaMenuDropdown">
+            <div class="mega-sidebar" id="megaSidebar">
+              <a href="courses.html?cat=proqramlasdirma" class="mega-cat-item active" data-cat="proqramlasdirma">
+                <span class="mega-cat-title">Proqramlaşdırma & AI</span>
+                <span class="mega-cat-sub">AI funksiyalı tam veb tətbiqlər</span>
+              </a>
+              <a href="courses.html?cat=mobil" class="mega-cat-item" data-cat="mobil">
+                <span class="mega-cat-title">Mobil Proqramlaşdırma</span>
+                <span class="mega-cat-sub">Android/iOS tətbiq və C# server</span>
+              </a>
+              <a href="courses.html?cat=datascience" class="mega-cat-item" data-cat="datascience">
+                <span class="mega-cat-title">Süni İntellekt & Data</span>
+                <span class="mega-cat-sub">Python ilə data təhlili və ML modeli</span>
+              </a>
+              <a href="courses.html?cat=analitika" class="mega-cat-item" data-cat="analitika">
+                <span class="mega-cat-title">Data Analitika</span>
+                <span class="mega-cat-sub">SQL ilə data və Power BI dashboard</span>
+              </a>
+              <a href="courses.html?cat=kids" class="mega-cat-item" data-cat="kids">
+                <span class="mega-cat-title">Uşaqlar Üçün İT</span>
+                <span class="mega-cat-sub">Öz saytını, oyununu və viktorinanı yarat</span>
+              </a>
+              <a href="courses.html?cat=biznes" class="mega-cat-item" data-cat="biznes">
+                <span class="mega-cat-title">İT Biznes Analitika</span>
+                <span class="mega-cat-sub">Biznes tələbi və texniki tapşırıq</span>
+              </a>
+            </div>
+            <div class="mega-content">
+              <div class="mega-courses-grid" id="megaCoursesGrid"></div>
+              <div class="mega-footer">
+                <span>Bütün tədris sahələri 100% praktiki layihələr üzərində qurulub</span>
+                <a href="courses.html" class="mega-all-link">
+                  Bütün tədris sahələri <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="about.html" class="nav-link">Haqqımızda</a></li>
+        <li><a href="why-us.html" class="nav-link">Üstünlüklərimiz</a></li>
+        <li><a href="teachers.html" class="nav-link">Müəllimlər</a></li>
+        <li><a href="contact.html" class="nav-link">Əlaqə</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-search" aria-label="Axtarış" title="Axtarış">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <a href="login.html" class="link-login">Daxil Ol</a>
+        <a href="register.html" class="btn-signup">Qeydiyyat</a>
+        <button class="mobile-menu-btn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="courseDetailPage">
+    <section class="cd-hero">
+      <div class="cd-container">
+        <a href="courses.html" class="cd-back-link">
+          <i class="fa-solid fa-arrow-left"></i> Bütün Tədris Proqramlarına Qayıt
+        </a>
+
+        <div class="cd-hero-badges">
+          <span class="cd-cat-pill" id="cdCategory">Kateqoriya</span>
+          <span class="cd-status-pill open" id="cdStatusPill">Yüklənir...</span>
+        </div>
+
+        <h1 class="cd-hero-title" id="cdTitle">Kurs yüklənir...</h1>
+        <p class="cd-hero-desc" id="cdDescription"></p>
+      </div>
+    </section>
+
+    <section class="cd-main">
+      <div class="cd-container">
+        <div class="cd-grid">
+          <div>
+            <!-- Əsas Göstəricilər -->
+            <div class="cd-card" id="cdSpecsCard">
+              <h2 class="cd-card-title"><i class="fa-solid fa-circle-info"></i> Proqram Haqqında Əsas Məlumatlar</h2>
+              <div class="cd-specs-grid" id="cdSpecsGrid"></div>
+            </div>
+
+            <!-- Texnologiyalar -->
+            <div class="cd-card" id="cdTechCard" style="display:none;">
+              <h2 class="cd-card-title"><i class="fa-solid fa-code"></i> Öyrəniləcək Texnologiyalar və Alətlər</h2>
+              <div class="cd-tech-list" id="cdTechList"></div>
+            </div>
+
+            <!-- Modullar -->
+            <div class="cd-card">
+              <h2 class="cd-card-title"><i class="fa-solid fa-list-check"></i> Tədris Proqramı (Modullar)</h2>
+              <ul class="cd-modules-list" id="cdModulesList"></ul>
+            </div>
+
+            <!-- Müəllim -->
+            <div class="cd-card" id="cdTeacherCard" style="display:none;">
+              <h2 class="cd-card-title"><i class="fa-solid fa-chalkboard-user"></i> Təlimçi</h2>
+              <div class="cd-teacher-box" id="cdTeacherBox"></div>
+            </div>
+          </div>
+
+          <aside>
+            <div class="cd-sidebar-card">
+              <img id="cdImage" class="cd-sidebar-img" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=700&q=80" alt="Kurs şəkli">
+              <div class="cd-sidebar-body">
+                <ul class="cd-sidebar-list" id="cdSidebarMeta"></ul>
+
+                <button type="button" id="cdApplyBtn" class="cd-apply-btn">
+                  Kursa Müraciət Et <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <a href="contact.html" class="cd-contact-btn">
+                  <i class="fa-regular fa-comment-dots"></i> Sualınız var? Əlaqə saxlayın
+                </a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-col footer-brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <img src="assets/images/logo.png" alt="Altensor Academy" class="main-logo-img">
+            <div class="brand-name">
+              Altensor<span>Academy</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Yüksək keyfiyyətli və praktiki tədrislə gələcəyin süni intellekt və proqramlaşdırma mütəxəssislərini yetişdiririk.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-circle" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-circle" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-circle" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/altensor.academy/" target="_blank" rel="noopener noreferrer" class="social-circle" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Sürətli Keçidlər</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Ana Səhifə</a></li>
+            <li><a href="courses.html">Tədris Proqramları</a></li>
+            <li><a href="about.html">Haqqımızda</a></li>
+            <li><a href="why-us.html">Üstünlüklərimiz</a></li>
+            <li><a href="contact.html">Əlaqə</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Bizimlə Əlaqə</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fa-regular fa-envelope"></i>
+              <a href="mailto:info@altensoracademy.com">info@altensoracademy.com</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:+994104727578">+994 10 472 75 78</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Baku, Azərbaycan</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">© 2026 Altensor Academy. Bütün hüquqlar qorunur.</p>
+        <div class="footer-bottom-links">
+          <a href="#">İstifadə Şərtləri</a>
+          <a href="#">Məxfilik Siyasəti</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js?v=2"></script>
+  <script src="js/main.js?v=2"></script>
+</body>
+</html>
