@@ -524,6 +524,24 @@ function renderStudyFields(filterKey, searchTerm) {
 function getCourseExtraMeta(course) {
     const key = getCourseFilterKey(course);
     const catalog = {
+        proqramlasdirma: {
+            age: "16+",
+            groupSize: "15-20 nəfər",
+            duration: "8 ay (32 həftə)",
+            intensity: "2 × 3 saat",
+            prerequisite: "Yoxdur",
+            technologies: ["HTML", "CSS", "JavaScript", "SQL Server", "C#", "ASP.NET Core MVC", "EF Core", "LLM API", "RAG"],
+            finalProject: "AI köməkçisi olan veb tətbiq (onlayn mağaza, rezervasiya sistemi)"
+        },
+        mobil: {
+            age: "16+",
+            groupSize: "15-20 nəfər",
+            duration: "6 ay (24 həftə)",
+            intensity: "2 × 3 saat",
+            prerequisite: "Yoxdur",
+            technologies: ["C#", ".NET Web API", "SQL Server", "JavaScript", "TypeScript", "React", "React Native (Expo)"],
+            finalProject: "Mobil tətbiq + C# Web API"
+        },
         kids: {
             age: "10-14 yaş",
             groupSize: "15-20 nəfər",
