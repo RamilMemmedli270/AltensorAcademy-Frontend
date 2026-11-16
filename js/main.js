@@ -541,45 +541,9 @@ function getCourseExtraMeta(course) {
             prerequisite: "Yoxdur",
             technologies: ["UML", "BPMN", "Jira", "Confluence", "Figma", "Postman", "SQL"],
             finalProject: "Texniki tapşırıq (TT/SRS) + UML/BPMN paketi"
-        },
-        proqramlasdirma: {
-            age: "18+",
-            groupSize: "15-20 nəfər",
-            duration: "Praktiki proqram",
-            intensity: "Həftədə 2-3 dəfə",
-            prerequisite: "Yoxdur",
-            technologies: ["HTML5", "CSS3", "JavaScript", "C# / .NET", "SQL Server", "AI Alətləri"],
-            finalProject: "Real canlı Full-stack veb layihə"
-        },
-        mobil: {
-            age: "18+",
-            groupSize: "15-20 nəfər",
-            duration: "Praktiki proqram",
-            intensity: "Həftədə 2-3 dəfə",
-            prerequisite: "Yoxdur",
-            technologies: ["iOS & Android", "REST API", "C# Backend", "Verilənlər Bazası"],
-            finalProject: "Mağaza üçün hazır mobil tətbiq"
-        },
-        datascience: {
-            age: "18+",
-            groupSize: "15-20 nəfər",
-            duration: "Praktiki proqram",
-            intensity: "Həftədə 2-3 dəfə",
-            prerequisite: "Yoxdur",
-            technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Machine Learning"],
-            finalProject: "Real data üzərində ML proqnozlaşdırma modeli"
-        },
-        analitika: {
-            age: "18+",
-            groupSize: "15-20 nəfər",
-            duration: "Praktiki proqram",
-            intensity: "Həftədə 2-3 dəfə",
-            prerequisite: "Yoxdur",
-            technologies: ["SQL", "Power BI", "DAX", "Excel", "Data Modelləşdirmə"],
-            finalProject: "İnteraktiv biznes analitika dashboard-u"
         }
     };
-    return catalog[key] || catalog.proqramlasdirma;
+    return catalog[key] || null;
 }
 
 async function initCourseDetailPage() {
@@ -630,27 +594,30 @@ async function initCourseDetailPage() {
     cdImg.alt = course.name;
 
     const meta = getCourseExtraMeta(course);
-    const specs = [
-        { icon: "fa-solid fa-user-group", label: "Yaş həddi", val: meta.age },
-        { icon: "fa-solid fa-users", label: "Qrup ölçüsü", val: meta.groupSize },
-        { icon: "fa-regular fa-clock", label: "Müddət", val: meta.duration },
-        { icon: "fa-regular fa-calendar-check", label: "Dərslər", val: meta.intensity },
-        { icon: "fa-solid fa-shield-check", label: "Ön tələb", val: meta.prerequisite },
-        { icon: "fa-solid fa-rocket", label: "Yekun layihə", val: meta.finalProject }
-    ];
+    if (meta) {
+        document.getElementById("cdSpecsCard").style.display = "block";
+        const specs = [
+            { icon: "fa-solid fa-user-group", label: "Yaş həddi", val: meta.age },
+            { icon: "fa-solid fa-users", label: "Qrup ölçüsü", val: meta.groupSize },
+            { icon: "fa-regular fa-clock", label: "Müddət", val: meta.duration },
+            { icon: "fa-regular fa-calendar-check", label: "Dərslər", val: meta.intensity },
+            { icon: "fa-solid fa-shield-check", label: "Ön tələb", val: meta.prerequisite },
+            { icon: "fa-solid fa-rocket", label: "Yekun layihə", val: meta.finalProject }
+        ];
 
-    document.getElementById("cdSpecsGrid").innerHTML = specs.map(s => `
-        <div class="cd-spec-item">
-            <div class="cd-spec-label"><i class="${s.icon}"></i> ${s.label}</div>
-            <div class="cd-spec-val">${escapeHtml(s.val)}</div>
-        </div>
-    `).join("");
+        document.getElementById("cdSpecsGrid").innerHTML = specs.map(s => `
+            <div class="cd-spec-item">
+                <div class="cd-spec-label"><i class="${s.icon}"></i> ${s.label}</div>
+                <div class="cd-spec-val">${escapeHtml(s.val)}</div>
+            </div>
+        `).join("");
 
-    if (meta.technologies && meta.technologies.length) {
-        document.getElementById("cdTechCard").style.display = "block";
-        document.getElementById("cdTechList").innerHTML = meta.technologies
-            .map(t => `<span class="cd-tech-badge">${escapeHtml(t)}</span>`)
-            .join("");
+        if (meta.technologies && meta.technologies.length) {
+            document.getElementById("cdTechCard").style.display = "block";
+            document.getElementById("cdTechList").innerHTML = meta.technologies
+                .map(t => `<span class="cd-tech-badge">${escapeHtml(t)}</span>`)
+                .join("");
+        }
     }
 
     const modules = getCourseModules(course);
@@ -663,7 +630,7 @@ async function initCourseDetailPage() {
 
     document.getElementById("cdSidebarMeta").innerHTML = `
         <li><span>Dərs günləri</span><strong>${escapeHtml(course.lessonDays || "-")}</strong></li>
-        <li><span>Müddət</span><strong>${escapeHtml(meta.duration)}</strong></li>
+        ${meta ? `<li><span>Müddət</span><strong>${escapeHtml(meta.duration)}</strong></li>` : ""}
         <li><span>Tədris formatı</span><strong>100% Praktiki</strong></li>
         <li><span>Sertifikat</span><strong>Rəsmi Sertifikat</strong></li>
     `;
