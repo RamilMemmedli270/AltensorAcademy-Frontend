@@ -542,6 +542,15 @@ function getCourseExtraMeta(course) {
             technologies: ["C#", ".NET Web API", "SQL Server", "JavaScript", "TypeScript", "React", "React Native (Expo)"],
             finalProject: "Mobil tətbiq + C# Web API"
         },
+        datascience: {
+            age: "16+",
+            groupSize: "15-20 nəfər",
+            duration: "6 ay (24 həftə)",
+            intensity: "2 × 3 saat",
+            prerequisite: "Yoxdur",
+            technologies: ["Python", "SQL", "PostgreSQL", "NumPy", "pandas", "scikit-learn", "XGBoost", "FastAPI"],
+            finalProject: "Proqnoz modeli və onun API-si"
+        },
         kids: {
             age: "10-14 yaş",
             groupSize: "15-20 nəfər",
