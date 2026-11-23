@@ -765,6 +765,13 @@ const FALLBACK_TEACHERS = [
         specialty: "Full-stack Proqramlaşdırma (AI ilə)",
         bio: "IT sahəsində 10+ illik təcrübəyə malik Full-stack proqramçı (7 il C#/.NET Core API, 3 il Java/Spring Boot). MSSQL, Oracle və PostgreSQL verilənlər bazaları üzrə real layihə təcrübəsini tələbələrə praktiki şəkildə öyrədir.",
         imagePath: "assets/images/teachers/huseyn-hesenli.jpg"
+    },
+    {
+        id: 4,
+        fullName: "Rəvan Umudov",
+        specialty: "Full-stack Proqramlaşdırma (AI ilə)",
+        bio: "Full-stack proqramlaşdırma (C#, ASP.NET Core, React, JavaScript) üzrə 2 illik təcrübəyə malik mütəxəssis. PostgreSQL və MSSQL verilənlər bazaları daxil olmaqla, sıfırdan tətbiq hazırlanmasını tələbələrə praktiki olaraq öyrədir.",
+        imagePath: "assets/images/teachers/revan-umudov.jpg"
     }
 ];
 
