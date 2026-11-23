@@ -696,18 +696,27 @@ async function initCourseDetailPage() {
     if (!teachers.length) teachers = FALLBACK_TEACHERS;
 
     const courseKey = getCourseFilterKey(course);
-    const matchedTeacher = teachers.find(t => getTeacherFilterKey(t) === courseKey);
-    if (matchedTeacher) {
-        const tImg = resolveImageUrl(matchedTeacher.imagePath, "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80");
+    const matchedTeachers = teachers.filter(t => getTeacherFilterKey(t) === courseKey);
+    if (matchedTeachers.length) {
+        const titleEl = document.getElementById("cdTeacherTitle");
+        if (titleEl) {
+            titleEl.innerHTML = `<i class="fa-solid fa-chalkboard-user"></i> ${matchedTeachers.length > 1 ? "Təlimçilər" : "Təlimçi"}`;
+        }
         document.getElementById("cdTeacherCard").style.display = "block";
-        document.getElementById("cdTeacherBox").innerHTML = `
-            <img class="cd-teacher-img" src="${tImg}" alt="${escapeHtml(matchedTeacher.fullName)}">
-            <div class="cd-teacher-info">
-                <h4>${escapeHtml(matchedTeacher.fullName)}</h4>
-                <span class="cd-teacher-spec">${escapeHtml(matchedTeacher.specialty)}</span>
-                <p class="cd-teacher-bio">${escapeHtml(matchedTeacher.bio || "")}</p>
-            </div>
-        `;
+        document.getElementById("cdTeacherBox").innerHTML = matchedTeachers.map((t, idx) => {
+            const tImg = resolveImageUrl(t.imagePath, "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80");
+            const borderStyle = idx > 0 ? "padding-top:16px; border-top:1px solid #E2E8F0;" : "";
+            return `
+                <div class="cd-teacher-box" style="${borderStyle}">
+                    <img class="cd-teacher-img" src="${tImg}" alt="${escapeHtml(t.fullName)}">
+                    <div class="cd-teacher-info">
+                        <h4>${escapeHtml(t.fullName)}</h4>
+                        <span class="cd-teacher-spec">${escapeHtml(t.specialty)}</span>
+                        <p class="cd-teacher-bio">${escapeHtml(t.bio || "")}</p>
+                    </div>
+                </div>
+            `;
+        }).join("");
     }
 }
 
