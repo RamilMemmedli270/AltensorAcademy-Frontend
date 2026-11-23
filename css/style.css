@@ -3767,3 +3767,87 @@ textarea.contact-input {
     display: none;
   }
 }
+
+
+/* Mobile Horizontal Overflow & Small-Phone Navbar Fix */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+section,
+header,
+footer {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@media (max-width: 768px) {
+  .header-nav .nav-container {
+    padding: 0 14px;
+    gap: 8px;
+  }
+
+  .hero-right > * {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-nav .nav-container {
+    height: 68px;
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .nav-menu {
+    top: 68px;
+    max-height: calc(100vh - 68px);
+  }
+
+  .main-logo-img {
+    height: 38px;
+  }
+
+  .brand-name {
+    font-size: 14.5px;
+    white-space: nowrap;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-actions .btn-search {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .nav-actions .link-login {
+    font-size: 12px;
+    padding: 6px 8px !important;
+    white-space: nowrap;
+  }
+
+  .nav-actions .btn-signup {
+    font-size: 12px;
+    padding: 7px 10px;
+    white-space: nowrap;
+  }
+
+  .mobile-menu-btn {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .hero-title {
+    font-size: 27px;
+  }
+
+  .hero-right {
+    grid-template-columns: 1fr;
+  }
+}
