@@ -605,6 +605,12 @@
                     <span>İstifadəçilər</span>
                 </button>
             </li>
+            <li>
+                <button class="nav-btn" onclick="switchTab('traffic', this)">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Trafik / Statistika</span>
+                </button>
+            </li>
         </ul>
 
         <div class="sidebar-footer">
@@ -829,6 +835,87 @@
                         <tbody id="usersTableBody">
                             <tr><td colspan="6">Yüklənir...</td></tr>
                         </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TAB: Sayt Trafiki və Statistika -->
+        <section id="tab-traffic" class="tab-panel">
+            <div class="stats-grid" style="margin-bottom:22px;">
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Bu Gün</h4>
+                        <div class="stat-val" id="trafTodayViews">0</div>
+                        <small id="trafTodayVisitors" style="color:var(--text-muted);font-size:0.78rem;">0 unikal ziyarətçi</small>
+                    </div>
+                    <div class="stat-icon icon-purple"><i class="fa-solid fa-eye"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Son 7 Gün</h4>
+                        <div class="stat-val" id="trafWeekViews">0</div>
+                        <small id="trafWeekVisitors" style="color:var(--text-muted);font-size:0.78rem;">0 unikal ziyarətçi</small>
+                    </div>
+                    <div class="stat-icon icon-orange"><i class="fa-solid fa-calendar-week"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Son 30 Gün</h4>
+                        <div class="stat-val" id="trafMonthViews">0</div>
+                        <small id="trafMonthVisitors" style="color:var(--text-muted);font-size:0.78rem;">0 unikal ziyarətçi</small>
+                    </div>
+                    <div class="stat-icon icon-blue"><i class="fa-solid fa-calendar-days"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-info">
+                        <h4>Ümumi Baxış</h4>
+                        <div class="stat-val" id="trafTotalViews">0</div>
+                        <small id="trafTotalVisitors" style="color:var(--text-muted);font-size:0.78rem;">0 unikal ziyarətçi</small>
+                    </div>
+                    <div class="stat-icon icon-green"><i class="fa-solid fa-chart-simple"></i></div>
+                </div>
+            </div>
+
+            <div class="panel-card" style="margin-bottom:22px;">
+                <div class="panel-header">
+                    <h3>Son 14 Günün Trafiki</h3>
+                    <button class="btn-add" onclick="loadTrafficStats()" style="padding:8px 14px;font-size:0.84rem;">
+                        <i class="fa-solid fa-rotate-right"></i> Yenilə
+                    </button>
+                </div>
+                <div id="trafficDailyChart" style="display:flex;align-items:flex-end;gap:8px;height:170px;padding:16px 8px 4px;border-bottom:1px solid var(--border);">
+                    <span style="color:var(--text-muted);font-size:0.9rem;">Yüklənir...</span>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;margin-bottom:22px;">
+                <div class="panel-card">
+                    <div class="panel-header"><h3>Ən Çox Baxılan Səhifələr</h3></div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Səhifə</th><th>Baxış</th><th>Ziyarətçi</th></tr></thead>
+                            <tbody id="trafTopPagesBody"><tr><td colspan="3">Yüklənir...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-card">
+                    <div class="panel-header"><h3>Ən Çox Baxılan Kurslar</h3></div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead><tr><th>Kurs</th><th>Baxış</th><th>Ziyarətçi</th></tr></thead>
+                            <tbody id="trafTopCoursesBody"><tr><td colspan="3">Yüklənir...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-card">
+                <div class="panel-header"><h3>Son Girişlər (Son 20)</h3></div>
+                <div class="table-responsive">
+                    <table>
+                        <thead><tr><th>Tarix / Saat</th><th>Səhifə</th><th>Haradan Gəlib</th></tr></thead>
+                        <tbody id="trafRecentBody"><tr><td colspan="3">Yüklənir...</td></tr></tbody>
                     </table>
                 </div>
             </div>
@@ -1401,6 +1488,71 @@
         loadTeachers();
         loadSpecialties();
         loadUsers();
+        loadTrafficStats();
+
+        function escapeHtml(str) {
+            return String(str ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        async function loadTrafficStats() {
+            try {
+                const res = await fetch(`${API_BASE_URL}/admin/traffic`, { headers: authHeaders() });
+                if (!res.ok) return;
+                const d = await res.json();
+
+                document.getElementById("trafTodayViews").textContent = d.todayViews ?? 0;
+                document.getElementById("trafTodayVisitors").textContent = `${d.todayVisitors ?? 0} unikal ziyarətçi`;
+                document.getElementById("trafWeekViews").textContent = d.weekViews ?? 0;
+                document.getElementById("trafWeekVisitors").textContent = `${d.weekVisitors ?? 0} unikal ziyarətçi`;
+                document.getElementById("trafMonthViews").textContent = d.monthViews ?? 0;
+                document.getElementById("trafMonthVisitors").textContent = `${d.monthVisitors ?? 0} unikal ziyarətçi`;
+                document.getElementById("trafTotalViews").textContent = d.totalViews ?? 0;
+                document.getElementById("trafTotalVisitors").textContent = `${d.totalVisitors ?? 0} unikal ziyarətçi`;
+
+                // 14-day bar chart
+                const chartEl = document.getElementById("trafficDailyChart");
+                const series = Array.isArray(d.dailySeries) ? d.dailySeries : [];
+                const maxViews = Math.max(1, ...series.map(s => s.views || 0));
+                chartEl.innerHTML = series.map(s => {
+                    const h = Math.max(4, Math.round(((s.views || 0) / maxViews) * 115));
+                    return `
+                        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:22px;" title="${s.date}: ${s.views} baxış, ${s.visitors} ziyarətçi">
+                            <span style="font-size:0.72rem;color:var(--text-muted);font-weight:600;">${s.views}</span>
+                            <div style="width:100%;max-width:28px;height:${h}px;background:linear-gradient(180deg,#5D5FEF,#818CF8);border-radius:6px 6px 2px 2px;"></div>
+                            <span style="font-size:0.68rem;color:var(--text-muted);">${s.date}</span>
+                        </div>
+                    `;
+                }).join("") || '<span style="color:var(--text-muted);">Məlumat yoxdur</span>';
+
+                // Top pages
+                const pagesBody = document.getElementById("trafTopPagesBody");
+                const topPages = Array.isArray(d.topPages) ? d.topPages : [];
+                pagesBody.innerHTML = topPages.length
+                    ? topPages.map(p => `<tr><td><strong>${escapeHtml(p.pageTitle)}</strong><br><small style="color:var(--text-muted);">${escapeHtml(p.path)}</small></td><td>${p.views}</td><td>${p.uniqueVisitors}</td></tr>`).join("")
+                    : '<tr><td colspan="3">Hələ məlumat yoxdur</td></tr>';
+
+                // Top courses
+                const coursesBody = document.getElementById("trafTopCoursesBody");
+                const topCourses = Array.isArray(d.topCourses) ? d.topCourses : [];
+                coursesBody.innerHTML = topCourses.length
+                    ? topCourses.map(c => `<tr><td>${escapeHtml(c.courseName)}</td><td>${c.views}</td><td>${c.uniqueVisitors}</td></tr>`).join("")
+                    : '<tr><td colspan="3">Hələ kurs baxışı qeydə alınmayıb</td></tr>';
+
+                // Recent visits
+                const recentBody = document.getElementById("trafRecentBody");
+                const recent = Array.isArray(d.recentVisits) ? d.recentVisits : [];
+                recentBody.innerHTML = recent.length
+                    ? recent.map(r => `<tr><td>${escapeHtml(r.timeBaku)}</td><td><strong>${escapeHtml(r.pageTitle)}</strong> <small style="color:var(--text-muted);">(${escapeHtml(r.path)})</small></td><td>${escapeHtml(r.referrer || "Birbaşa")}</td></tr>`).join("")
+                    : '<tr><td colspan="3">Hələ giriş yoxdur</td></tr>';
+            } catch (e) {
+                console.error("Traffic load error:", e);
+            }
+        }
     </script>
 </body>
 </html>

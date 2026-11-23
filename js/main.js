@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initCoursesPage();
     initCourseDetailPage();
     initTeachersPage();
+    trackPageView();
 });
 
 function initMobileMenu() {
@@ -1006,4 +1007,46 @@ function initFloatingWhatsApp() {
         <i class="fa-brands fa-whatsapp"></i>
     `;
     document.body.appendChild(btn);
+}
+
+// ========================================================
+// 8. PAGE TRAFFIC TRACKING (Anonymous, Fail-Silent)
+// ========================================================
+function getOrCreateVisitorId() {
+    const key = "altensor_visitor_id";
+    let id = localStorage.getItem(key);
+    if (!id) {
+        id = (typeof crypto !== "undefined" && crypto.randomUUID)
+            ? crypto.randomUUID().replace(/-/g, "")
+            : ("v" + Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
+        localStorage.setItem(key, id);
+    }
+    return id;
+}
+
+function trackPageView() {
+    try {
+        if (typeof API_BASE_URL === "undefined") return;
+        const path = (window.location.pathname || "/") + (window.location.search || "");
+        if (path.toLowerCase().includes("admin.html")) return;
+
+        const params = new URLSearchParams(window.location.search);
+        const rawCourseId = params.get("id");
+        const courseId = rawCourseId && /^\d+$/.test(rawCourseId) ? Number(rawCourseId) : null;
+
+        fetch(`${API_BASE_URL}/analytics/track`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            keepalive: true,
+            body: JSON.stringify({
+                path,
+                pageTitle: document.title || path,
+                visitorId: getOrCreateVisitorId(),
+                courseId,
+                referrer: document.referrer || null
+            })
+        }).catch(() => {});
+    } catch {
+        // fail-silent
+    }
 }
