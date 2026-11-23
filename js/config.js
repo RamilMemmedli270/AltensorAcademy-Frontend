@@ -6,7 +6,7 @@ const isLocalDev =
 
 const BACKEND_BASE_URL = isLocalDev
     ? "http://localhost:5150"
-    : `${window.location.protocol === "http:" ? "http:" : "https:"}//api-altensoracademy.com`;
+    : `${window.location.protocol === "http:" ? "http:" : "https:"}//api.altensoracademy.com`;
 const API_BASE_URL = `${BACKEND_BASE_URL}/api`;
 
 function getToken() {
