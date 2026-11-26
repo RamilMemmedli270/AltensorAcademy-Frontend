@@ -1046,6 +1046,15 @@ function trackPageView() {
         const path = (window.location.pathname || "/") + (window.location.search || "");
         if (path.toLowerCase().includes("admin.html")) return;
 
+        // Admin hesabını və ya admin paneli açılmış brauzeri trafikə sayma
+        const role = localStorage.getItem("role");
+        const currentUser = typeof getCurrentUser === "function" ? getCurrentUser() : null;
+        if (role === "Admin" || currentUser?.role === "Admin") {
+            localStorage.setItem("altensor_ignore_analytics", "1");
+            return;
+        }
+        if (localStorage.getItem("altensor_ignore_analytics") === "1") return;
+
         const params = new URLSearchParams(window.location.search);
         const rawCourseId = params.get("id");
         const courseId = rawCourseId && /^\d+$/.test(rawCourseId) ? Number(rawCourseId) : null;
